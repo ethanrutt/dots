@@ -12,3 +12,8 @@
     - bat
     - fzf
 - Also check out my nvim-config
+
+### TODO
+- go through arch and wsl builds and make sensible bashrc
+- go through tmux conf
+- find a way to grab nvim-config?
