@@ -1,5 +1,7 @@
 ## Ethan's dots
 
+- Heavily inspired by TechDufus's [repo](https://github.com/techdufus/dotfiles)
+
 - Various programs and their configuration files that I use for development
 
 - Before you start

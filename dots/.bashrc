@@ -19,10 +19,11 @@ shopt -s globstar
 # turn off stty so that C-s doesn't mess up terminal
 stty -ixon
 
-if [ command -v fzf &> /dev/null ]; then
+if [ -x $(command -v fzf) ]; then
     # Set up fzf key bindings and fuzzy completion
     export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
     eval "$(fzf --bash)"
+
 fi
 
 if [ -f ~/.bash_aliases ]; then
