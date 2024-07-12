@@ -7,20 +7,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto -n'
     alias fgrep='fgrep --color=auto -n'
     alias egrep='egrep --color=auto -n'
-else
-    alias grep='grep -n'
-    alias egrep='egrep -n'
-    alias fgrep='fgrep -n'
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='eza -alF --icons'
+alias la='eza -A'
+alias l='eza --oneline'
 
 # dir traversal aliases
 alias home='cd ~'
-alias whome='cd /mnt/c/Users/skate'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -43,12 +38,6 @@ alias q='exit'
 function cd {
     builtin cd "$@" && ll
 }
-
-# allow C-r fzf and C-t file search in current directory
-if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-    # note: I switch alt + c (M-c) to ctrl + f (C-f) to fzf cd in this file
-    source /usr/share/doc/fzf/examples/key-bindings.bash
-fi
 
 # tmuxster and sf commands
 if [ -f ~/.tmuxster.bash ]; then
