@@ -1,0 +1,16 @@
+- name: "Neovim | Install dependencies on Arch"
+  community.general.pacman:
+    name:
+      - cmake
+      - curl
+      - unzip
+      - ripgrep
+      - gcc
+    state: present
+  become_user: root
+
+- name: "Neovim | Install on Arch"
+  community.general.pacman:
+    name: neovim
+    state: present
+  become_user: root
