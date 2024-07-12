@@ -3,3 +3,9 @@
     src: "arch/.bash_profile"
     dest: "{{ ansible_user_dir }}/.bash_profile"
     mode: "0644"
+
+- name: "Bash | Copy arch .xinitrc"
+  ansible.builtin.copy:
+    src: "arch/.xinitrc"
+    dest: "{{ ansible_user_dir }}/.xinitrc"
+    mode: "0644"
