@@ -17,15 +17,16 @@
     dest: "{{ ansible_user_dir }}/.bash_logout"
     mode: "0644"
 
-- name: "Bash | Copy .bash_profile"
-  ansible.builtin.copy:
-    src: ".bash_profile"
-    dest: "{{ ansible_user_dir }}/.bash_profile"
-    mode: "0644"
-
 - name: "Bash | Copy .tmuxster.bash"
   ansible.builtin.copy:
     src: ".tmuxster.bash"
     dest: "{{ ansible_user_dir }}/.tmuxster.bash"
     mode: "0644"
 
+- name: "Bash | Run Ubuntu Tasks"
+  ansible.builtin.import_tasks: ubuntu.yml
+  when: ansible_os_family == 'Debian'
+
+- name: "Bash | Run Arch Tasks"
+  ansible.builtin.import_tasks: arch.yml
+  when: ansible_os_family == 'Archlinux'
