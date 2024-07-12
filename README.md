@@ -6,3 +6,12 @@
 
 - install required apps on startup
 - reconcile wsl and arch differences
+
+### Stuff
+- Arch
+    - awesome
+    - pulseaudio
+    - yay
+    - kitty
+    - rofi
+    - nitrogen

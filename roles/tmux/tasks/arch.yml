@@ -1,0 +1,5 @@
+- name: "Tmux | Install on Arch"
+  community.general.pacman:
+    name: tmux
+    state: present
+  become: true
