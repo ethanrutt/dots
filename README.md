@@ -2,16 +2,42 @@
 
 - heavily inspired from TechDufus's [dotfiles](https://github.com/TechDufus/dotfiles)
 
+## Usage
+
+- get ansible with pip
+```sh
+pip install ansible
+```
+- get ansible with package manager
+```sh
+sudo pacman -S ansible
+```
+- run the playbook
+```
+ansible-playbook main.yml
+```
+
 ### TODO
 
-- install required apps on startup
-- reconcile wsl and arch differences
+- get bash script setup to get this playbook and run it
 
-### Stuff
-- Arch
-    - awesome
-    - pulseaudio
-    - yay
-    - kitty
-    - rofi
-    - nitrogen
+- figure out how to do additional roles if its arch
+    - Arch roles needed
+        - awesome
+        - pulseaudio
+        - yay
+        - kitty
+        - rofi
+        - nitrogen
+
+- add additional stuff to config
+    - diff-so-fancy
+    - fzf install
+    - bat install
+    - eza install
+    - npm and nvm install and setup
+    - git install and setup
+
+- test on vms
+
+- figure out vault for ssh keys?
