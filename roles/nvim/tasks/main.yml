@@ -1,0 +1,9 @@
+---
+- name: "Neovim | Configure nvim"
+  ansible.builtin.copy:
+    src: nvim
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+
