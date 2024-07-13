@@ -1,0 +1,96 @@
+DOTS_DIR="$HOME/.dots"
+
+function arch_setup() {
+    if ! [ -x "$(command -v ansible)" ]; then
+        echo "Installing Ansible"
+        sudo pacman -Sy --noconfirm
+        sudo pacman -S --noconfirm ansible
+        sudo pacman -S --noconfirm python-argcomplete
+        sudo activate-global-python-argcomplete3
+    fi
+
+    if ! pacman -Q python3 >/dev/null 2>&1; then
+        echo "Installing Python3"
+        sudo pacman -S --noconfirm python3
+    fi
+
+    if ! pacman -Q python-pip >/dev/null 2>&1; then
+        echo "Installing Python3 Pip"
+        sudo pacman -S --noconfirm python-pip
+    fi
+
+    if ! pip3 list | grep watchdog >/dev/null 2>&1; then
+        echo "Installing Python3 Watchdog"
+        sudo pacman -S --noconfirm python-watchdog
+    fi
+
+    if ! pacman -Q openssh >/dev/null 2>&1; then
+        echo "Installing OpenSSH"
+        sudo pacman -S --noconfirm openssh
+    fi
+
+    if ! pacman -Q git >/dev/null 2>&1; then
+        echo "Installing git"
+        sudo pacman -S --noconfirm git
+    fi
+
+    echo "Setting Locale"
+    sudo localectl set-locale LANG=en_US.UTF-8
+}
+
+function ubuntu_setup() {
+    if ! dpkg -s ansible >/dev/null 2>&1; then
+        echo "Installing Ansible"
+        sudo apt-get update
+        sudo apt-get install -y software-properties-common
+        sudo apt-add-repository -y ppa:ansible/ansible
+        sudo apt-get update
+        sudo apt-get install -y ansible
+        sudo apt-get install python3-argcomplete
+        sudo activate-global-python-argcomplete3
+    fi
+
+    if ! dpkg -s python3 >/dev/null 2>&1; then
+        echo "Installing Python3"
+        sudo apt-get install -y python3
+    fi
+
+    if ! dpkg -s python3-pip >/dev/null 2>&1; then
+        echo "Installing Python3 Pip"
+        sudo apt-get install -y python3-pip
+    fi
+
+    if ! dpkg -s git >/dev/null 2>&1; then
+        echo "Installing git"
+        sudo apt-get install -y git
+    fi
+}
+
+source /etc/os-release
+echo "Loading Setup for detected OS: $ID"
+case $ID in
+  ubuntu)
+    ubuntu_setup
+    ;;
+  arch)
+    arch_setup
+    ;;
+  *)
+    echo "Unsupported OS"
+    exit 1
+    ;;
+esac
+
+if ! [[ -d "$DOTFILES_DIR" ]]; then
+  echo "Cloning repository"
+  git clone --quiet https://github.com/TechDufus/dotfiles.git "$DOTFILES_DIR"
+else
+  echo "Updating repository"
+  git -C "$DOTFILES_DIR" pull --quiet
+fi
+
+echo "Running ansible playbook"
+pushd "$DOTFILES_DIR"
+ansible-playbook "$DOTFILES_DIR/main.yml"
+echo "playbook complete"
+popd
