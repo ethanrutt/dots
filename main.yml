@@ -4,10 +4,19 @@
   connection: local
 
   tasks:
-    - name: Set roles
+    - name: Set Ubuntu roles
       ansible.builtin.set_fact:
         run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or
-        default_roles | difference(exclude_roles | default([])) }}"
+        ubuntu_roles | difference(exclude_roles | default([])) }}"
+      when: ansible_os_family == 'Debian'
+      tags:
+        - always
+
+    - name: Set Arch roles
+      ansible.builtin.set_fact:
+        run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or
+        arch_roles | difference(exclude_roles | default([])) }}"
+      when: ansible_os_family == 'Archlinux'
       tags:
         - always
 

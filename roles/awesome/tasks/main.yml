@@ -1,0 +1,13 @@
+- name: "Awesome | Install on Arch"
+  community.general.pacman:
+    name: awesome
+    state: present
+  become_user: root
+
+- name: "Awesome | Configure awesome"
+  ansible.builtin.copy:
+    src: awesome
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true

@@ -1,4 +1,15 @@
-default_roles:
+ubuntu_roles:
   - bash
   - tmux
   - nvim
+
+arch_roles:
+  - bash
+  - tmux
+  - nvim
+  - awesome
+  - rofi
+  - nitrogen
+  - yay
+  - kitty
+  - pulseaudio
