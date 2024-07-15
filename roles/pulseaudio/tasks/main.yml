@@ -1,0 +1,6 @@
+- name: "PulseAudio | Install on Arch"
+  community.general.pacman:
+    name: pulseaudio
+    state: present
+  become_user: root
+

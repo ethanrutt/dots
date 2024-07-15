@@ -13,3 +13,4 @@ arch_roles:
   - yay
   - kitty
   - pulseaudio
+  - pavucontrol

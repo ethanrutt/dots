@@ -23,12 +23,9 @@ ansible-playbook main.yml
 
 - figure out how to do additional roles if its arch
     - Arch roles needed
-        - awesome
-        - pulseaudio
         - yay
-        - kitty
         - rofi
-        - nitrogen
+        - anything else I need
 
 - add additional stuff to config
     - diff-so-fancy
