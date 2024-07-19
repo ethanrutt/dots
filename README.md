@@ -25,7 +25,13 @@ ansible-playbook main.yml
     - Arch roles needed
         - yay
         - rofi
-        - anything else I need
+        - discord
+        - spotify
+        - ephoto
+        - firefox
+        - noto-fonts (all CJK, emoji, and other noto fonts)
+        - shotgun
+        - ttf-agave-nerd
 
 - add additional stuff to config
     - diff-so-fancy
@@ -34,6 +40,7 @@ ansible-playbook main.yml
     - eza install
     - npm and nvm install and setup
     - git install and setup
+    - zip and unzip
 
 - test on vms
 
