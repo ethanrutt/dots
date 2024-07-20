@@ -1,12 +1,12 @@
-- name: "Kitty | Install on Arch"
+- name: "Rofi | Install on Arch"
   community.general.pacman:
-    name: kitty
+    name: rofi
     state: present
   become_user: root
 
-- name: "Kitty | Configure kitty"
+- name: "Rofi | Configure rofi"
   ansible.builtin.copy:
-    src: kitty
+    src: rofi
     dest: "{{ ansible_user_dir }}/.config/"
     mode: "0644"
     directory_mode: "0755"

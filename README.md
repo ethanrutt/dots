@@ -23,24 +23,18 @@ ansible-playbook main.yml
 
 - figure out how to do additional roles if its arch
     - Arch roles needed
-        - yay
-        - rofi
-        - discord
-        - spotify
-        - ephoto
-        - firefox
-        - noto-fonts (all CJK, emoji, and other noto fonts)
-        - shotgun
-        - ttf-agave-nerd
+        <!-- - yay -->
+        <!-- - rofi -->
+        <!-- - discord -->
+        <!-- - spotify -->
+        <!-- - ephoto -->
+        <!-- - firefox -->
+        <!-- - noto-fonts (all CJK, emoji, and other noto fonts) -->
+        <!-- - shotgun -->
+        <!-- - ttf-agave-nerd -->
 
 - add additional stuff to config
-    - diff-so-fancy
-    - fzf install
-    - bat install
-    - eza install
     - npm and nvm install and setup
-    - git install and setup
-    - zip and unzip
 
 - test on vms
 

@@ -1,0 +1,11 @@
+- name: "Zips | Install zip on Arch"
+  community.general.pacman:
+    name: zip
+    state: present
+  become_user: root
+
+- name: "Zips | Install unzip on Arch"
+  community.general.pacman:
+    name: unzip
+    state: present
+  become_user: root

@@ -1,12 +1,17 @@
 ubuntu_roles:
   - bash
+  - fzf
+  - zips
+  - node
   - tmux
   - nvim
 
 arch_roles:
   - bash
+  - fzf
+  - zips
+  - node
   - tmux
-  - nvim
   - awesome
   - rofi
   - nitrogen
@@ -14,3 +19,10 @@ arch_roles:
   - kitty
   - pulseaudio
   - pavucontrol
+  - discord
+  - ephoto
+  - firefox
+  - fonts
+  - shotgun
+  - spotify
+  - nvim

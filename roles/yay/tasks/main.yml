@@ -1,0 +1,19 @@
+-name: "Yay | Create Downloads Directory"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Downloads/"
+    state: directory
+    mode: '0755'
+
+-name: "Yay | Install base-devel"
+  community.general.pacman:
+    name: base-devel
+    state: present
+  become_user: root
+
+-name: "Yay | Clone yay-bin repository"
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay-bin.git
+    dest: "{{ ansible_user_dir }}/Downloads/"
+
+-name: "Yay | makepkg"
+  ansible.builtin.command: cd "{{ ansible_user_dir }}/Downloads/yay-bin" && makepkg -si

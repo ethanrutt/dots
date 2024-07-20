@@ -1,0 +1,5 @@
+- name: "EPhoto | Install on Arch"
+  community.general.pacman:
+    name: ephoto
+    state: present
+  become_user: root

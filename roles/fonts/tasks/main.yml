@@ -1,0 +1,11 @@
+- name: "Fonts | Install ttf-agave-nerd on Arch"
+  community.general.pacman:
+    name: ttf-agave-nerd
+    state: present
+  become_user: root
+
+- name: "Fonts | Install noto-fonts on Arch"
+  community.general.pacman:
+    name: noto-fonts
+    state: present
+  become_user: root

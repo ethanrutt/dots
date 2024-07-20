@@ -1,0 +1,2 @@
+- name: "Install fzf"
+  ansible.builtin.shell: "{{ ansible_user_dir }}/.fzf/install --all --no-update-rc --no-zsh --no-fish"
