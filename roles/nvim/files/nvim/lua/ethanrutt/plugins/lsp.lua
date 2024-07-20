@@ -53,10 +53,8 @@ return {
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, '[W]orkspace [L]ist Folders')
 
-            -- Create a command `:Format` local to the LSP buffer
-            vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-                vim.lsp.buf.format()
-            end, { desc = 'Format current buffer with LSP' })
+            -- Formatting
+            nmap('<leader>f', vim.lsp.buf.format, '[F]ormat current buffer')
         end
 
         -- mason-lspconfig requires that these setup functions are called in this order
@@ -79,6 +77,7 @@ return {
                     telemetry = { enable = false },
                 },
             },
+            clangd = {},
         }
 
         -- Setup neovim lua configuration
@@ -107,4 +106,3 @@ return {
         }
     end
 }
-
