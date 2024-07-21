@@ -24,5 +24,6 @@ arch_roles:
   - shotgun
   - spotify
   - tmux
+  - xorg
   - yay
   - zips
