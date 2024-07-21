@@ -59,13 +59,13 @@ else
     PS1='[\u@\h:\w]\$ '
 fi
 
-if [ -f ~/.nvm ]; then
+if [ -d ~/.nvm ]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
-if [ -f ~/.dots ]; then
+if [ -d ~/.dots ]; then
     export $PATH=$PATH:~/.dots/bin
 fi
 
