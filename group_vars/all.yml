@@ -1,28 +1,28 @@
 ubuntu_roles:
   - bash
   - fzf
-  - zips
   - node
-  - tmux
   - nvim
+  - tmux
+  - zips
 
 arch_roles:
-  - bash
-  - fzf
-  - zips
-  - node
-  - tmux
   - awesome
-  - rofi
-  - nitrogen
-  - yay
-  - kitty
-  - pulseaudio
-  - pavucontrol
+  - bash
   - discord
   - ephoto
   - firefox
   - fonts
+  - fzf
+  - kitty
+  - nitrogen
+  - node
+  - nvim
+  - pavucontrol
+  - pulseaudio
+  - rofi
   - shotgun
   - spotify
-  - nvim
+  - tmux
+  - yay
+  - zips
