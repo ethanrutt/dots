@@ -19,21 +19,6 @@ shopt -s globstar
 # turn off stty so that C-s doesn't mess up terminal
 stty -ixon
 
-if [ -x $(command -v fzf) ]; then
-    # Set up fzf key bindings and fuzzy completion
-    export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
-    eval "$(fzf --bash)"
-
-fi
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-if [ -f ~/.dots ]; then
-    export PATH="$PATH:$HOME/.dots/bin/source_dots"
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
