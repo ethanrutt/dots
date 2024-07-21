@@ -1,5 +1,6 @@
 - name: "fzf | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: fzf
     state: present
-  become_user: root

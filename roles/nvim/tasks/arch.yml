@@ -1,4 +1,6 @@
 - name: "Neovim | Install dependencies on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name:
       - cmake
@@ -7,10 +9,10 @@
       - ripgrep
       - gcc
     state: present
-  become_user: root
 
 - name: "Neovim | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: neovim
     state: present
-  become_user: root

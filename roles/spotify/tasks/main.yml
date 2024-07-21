@@ -1,5 +1,6 @@
 - name: "Spotify | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: spotify-launcher
     state: present
-  become_user: root

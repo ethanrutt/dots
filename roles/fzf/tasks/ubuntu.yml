@@ -1,8 +1,9 @@
 - name: "fzf | Uninstall APT fzf"
+  become_user: root
+  become: true
   ansible.builtin.apt:
     name: fzf
     state: absent
-  become_user: root
 
 - name: "fzf | Clone Latest Version"
   ansible.builtin.git:

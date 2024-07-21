@@ -1,8 +1,9 @@
 - name: "Rofi | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: rofi
     state: present
-  become_user: root
 
 - name: "Rofi | Configure rofi"
   ansible.builtin.copy:

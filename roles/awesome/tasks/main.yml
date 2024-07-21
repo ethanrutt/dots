@@ -1,8 +1,9 @@
 - name: "Awesome | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: awesome
     state: present
-  become_user: root
 
 - name: "Awesome | Configure awesome"
   ansible.builtin.copy:

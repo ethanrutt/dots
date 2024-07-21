@@ -1,11 +1,13 @@
 - name: "Zips | Install zip on Ubuntu"
+  become_user: root
+  become: true
   ansible.builtin.apt:
     name: zip
     state: present
-  become_user: root
 
 - name: "Zips | Install unzip on Ubuntu"
+  become_user: root
+  become: true
   ansible.builtin.apt:
     name: unzip
     state: present
-  become_user: root

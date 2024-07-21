@@ -1,6 +1,7 @@
 - name: "Nitrogen | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: nitrogen
     state: present
-  become_user: root
 

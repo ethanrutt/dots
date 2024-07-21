@@ -1,5 +1,6 @@
 - name: "Tmux | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: tmux
     state: present
-  become_user: root

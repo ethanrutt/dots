@@ -1,5 +1,6 @@
 - name: "FireFox | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: firefox
     state: present
-  become_user: root

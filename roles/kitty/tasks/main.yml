@@ -1,8 +1,9 @@
 - name: "Kitty | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: kitty
     state: present
-  become_user: root
 
 - name: "Kitty | Configure kitty"
   ansible.builtin.copy:

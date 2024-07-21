@@ -1,8 +1,9 @@
 - name: "PavuControl | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: pavucontrol
     state: present
-  become_user: root
 
 - name: "PavuControl | Configure pavucontrol"
   ansible.builtin.copy:

@@ -1,11 +1,13 @@
 - name: "Zips | Install zip on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: zip
     state: present
-  become_user: root
 
 - name: "Zips | Install unzip on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: unzip
     state: present
-  become_user: root

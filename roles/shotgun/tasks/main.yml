@@ -1,5 +1,6 @@
 - name: "Shotgun | Install on Arch"
+  become_user: root
+  become: true
   community.general.pacman:
     name: shotgun
     state: present
-  become_user: root

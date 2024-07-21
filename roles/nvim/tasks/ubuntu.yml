@@ -1,4 +1,6 @@
 - name: "Neovim | Install dependencies on Ubuntu"
+  become_user: root
+  become: true
   ansible.builtin.apt:
     name:
       - cmake
@@ -7,10 +9,10 @@
       - ripgrep
       - gcc
     state: present
-  become_user: root
 
 - name: "Neovim | Install on Ubuntu"
+  become_user: root
+  become: true
   ansible.builtin.apt_repository:
     repo: ppa:neovim-ppa/unstable
     state: present
-  become_user: root
