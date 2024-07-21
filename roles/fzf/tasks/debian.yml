@@ -11,7 +11,7 @@
     depth: 1
     dest: "{{ ansible_env.HOME }}/.fzf"
 
-- name: "Install fzf"
+- name: "fzf | Install fzf"
   ansible.builtin.shell: "{{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-zsh --no-fish"
   args:
     executable: /bin/bash
