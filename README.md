@@ -7,7 +7,7 @@
 - This oneliner should completely set up your system (copying TechDufus for now)
 
 ```sh
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dotfiles/main/bin/dots)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dots/main/bin/dots)"
 ```
 
 ## Dev Commands
