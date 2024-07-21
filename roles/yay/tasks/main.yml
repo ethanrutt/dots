@@ -25,3 +25,4 @@
 - name: "Yay | makepkg"
   ansible.builtin.shell: "cd '{{ ansible_user_dir }}/Downloads/yay-bin' && makepkg -si --noconfirm"
   when: result.rc == 1
+

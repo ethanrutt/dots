@@ -1,6 +1,13 @@
+- name: "PulseAudio | Check if pulseaudio already installed"
+  ansible.builtin.shell: "command -v pulseaudio"
+  register: result
+  ignore_errors: true
+
 - name: "PulseAudio | Install on Arch"
   become: true
   become_user: root
   community.general.pacman:
     name: pulseaudio
     state: present
+  when: result.rc == 1
+
