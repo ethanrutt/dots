@@ -81,17 +81,17 @@ case $ID in
     ;;
 esac
 
-if ! [[ -d "$DOTFILES_DIR" ]]; then
+if ! [[ -d "$DOTS_DIR" ]]; then
   echo "Cloning repository"
   git clone --quiet https://github.com/ethanrutt/dots.git "$DOTS_DIR"
 else
   echo "Updating repository"
-  git -C "$DOTFILES_DIR" pull --quiet
+  git -C "$DOTS_DIR" pull --quiet
 fi
 
 echo "Running ansible playbook"
-pushd "$DOTFILES_DIR"
-ansible-playbook --ask-become-pass "$DOTFILES_DIR/main.yml"
+pushd "$DOTS_DIR"
+ansible-playbook --ask-become-pass "$DOTS_DIR/main.yml"
 echo "playbook complete"
 popd
 
