@@ -12,7 +12,7 @@
     dest: "{{ ansible_env.HOME }}/.fzf"
 
 - name: "fzf | Install fzf"
-  ansible.builtin.shell: "{{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-zsh --no-fish"
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.fzf/install --bin"
   args:
     executable: /bin/bash
 
