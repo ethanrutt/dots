@@ -4,7 +4,8 @@
 
 ## Usage
 
-- This oneliner should completely set up your system (copying TechDufus for now)
+- This oneliner should completely set up your system (for arch)
+- I only really use Ubuntu in WSL so that's all Ubuntu will be setup for
 
 ```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dots/main/bin/dots)"
@@ -38,12 +39,5 @@ ansible-playbook --ask-become-pass main.yml
 
 ### TODO
 
-- get bash script setup to get this playbook and run it
-
-- packages missing
-    - xorg-xinit
-    - xorg-server
-
-- test on vms
-
 - figure out vault for ssh keys?
+
