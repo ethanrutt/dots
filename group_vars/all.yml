@@ -19,7 +19,7 @@ arch_roles:
   - nvim
   - nvm
   - pavucontrol
-  - pulseaudio
+  # - pulseaudio
   - rofi
   - shotgun
   - spotify

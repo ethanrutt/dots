@@ -11,3 +11,11 @@
   community.general.pacman:
     name: noto-fonts
     state: present
+
+- name: "Fonts | Install noto-fonts-cjk on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: noto-fonts-cjk
+    state: present
+

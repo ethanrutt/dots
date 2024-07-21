@@ -43,7 +43,6 @@ ansible-playbook --ask-become-pass main.yml
 - packages missing
     - xorg-xinit
     - xorg-server
-    - noto-fonts-cjk
 
 - test on vms
 

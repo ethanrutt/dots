@@ -1,0 +1,14 @@
+- name: "Xorg | Install xorg-server on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: xorg-server
+    state: present
+
+- name: "Xorg | Install xorg-xinit on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: xorg-xinit
+    state: present
+
