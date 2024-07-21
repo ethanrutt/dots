@@ -1,5 +1,5 @@
-- name: "Neovim | Run Ubuntu tasks"
-  ansible.builtin.import_tasks: ubuntu.yml
+- name: "Neovim | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: "Neovim | Run Arch tasks"

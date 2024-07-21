@@ -1,5 +1,5 @@
-- name: "fzf | Run Ubuntu tasks"
-  ansible.builtin.import_tasks: ubuntu.yml
+- name: "fzf | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: "fzf | Run Arch tasks"

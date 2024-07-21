@@ -12,8 +12,8 @@
     directory_mode: "0755"
     force: true
 
-- name: "Bash | Run Ubuntu Tasks"
-  ansible.builtin.import_tasks: ubuntu.yml
+- name: "Bash | Run Debian Tasks"
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: "Bash | Run Arch Tasks"

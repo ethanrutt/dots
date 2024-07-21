@@ -1,5 +1,5 @@
-- name: "Zips | Run Ubuntu tasks"
-  ansible.builtin.import_tasks: ubuntu.yml
+- name: "Zips | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
 - name: "Zips | Run Arch tasks"

@@ -1,4 +1,4 @@
-- name: "Neovim | Install dependencies on Ubuntu"
+- name: "Neovim | Install dependencies on Debian"
   become: true
   become_user: root
   ansible.builtin.apt:
@@ -10,7 +10,7 @@
       - gcc
     state: present
 
-- name: "Neovim | Install on Ubuntu"
+- name: "Neovim | Install on Debian"
   become: true
   become_user: root
   ansible.builtin.apt_repository:

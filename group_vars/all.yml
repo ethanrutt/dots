@@ -1,4 +1,4 @@
-ubuntu_roles:
+debian_roles:
   - bash
   - fzf
   - nvim

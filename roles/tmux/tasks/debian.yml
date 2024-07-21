@@ -1,4 +1,4 @@
-- name: "Tmux | Install on Ubuntu"
+- name: "Tmux | Install on Debian"
   become: true
   become_user: root
   ansible.builtin.apt:
