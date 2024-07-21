@@ -9,12 +9,10 @@
   ansible.builtin.git:
     repo: https://github.com/junegunn/fzf.git
     depth: 1
-    dest: "{{ ansible_user_dir }}/.fzf"
-  register: result
+    dest: "{{ ansible_env.HOME }}/.fzf"
 
 - name: "Install fzf"
-  ansible.builtin.shell: "{{ ansible_user_dir }}/.fzf/install --all --no-update-rc --no-zsh --no-fish"
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-zsh --no-fish"
   args:
     executable: /bin/bash
-  when: result.rc == 0
 
