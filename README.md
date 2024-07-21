@@ -4,19 +4,34 @@
 
 ## Usage
 
+- This oneliner should completely set up your system (copying TechDufus for now)
+
+```sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/TechDufus/dotfiles/main/bin/dotfiles)"
+```
+
+## Dev Commands
+
 - get ansible with pip
+
 ```sh
 pip install ansible
 ```
+
 - get ansible with package manager
+
 ```sh
 sudo pacman -S ansible
 ```
+
 - run the playbook (prob won't work since you likely need sudo to install packages)
+
 ```
 ansible-playbook main.yml
 ```
+
 - run the playbook and install packages too
+
 ```
 ansible-playbook --ask-become-pass main.yml
 ```
