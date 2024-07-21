@@ -1,8 +1,8 @@
 ubuntu_roles:
   - bash
   - fzf
-  - node
   - nvim
+  - nvm
   - tmux
   - zips
 
@@ -16,8 +16,8 @@ arch_roles:
   - fzf
   - kitty
   - nitrogen
-  - node
   - nvim
+  - nvm
   - pavucontrol
   - pulseaudio
   - rofi

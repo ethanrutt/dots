@@ -1,0 +1,21 @@
+- name: "NVM | Install nvm"
+  ansible.builtin.shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: "NVM | Install latest node version"
+  ansible.builtin.shell: >
+    nvm install node
+
+- name: "NVM | Use latest node version"
+  ansible.builtin.shell: >
+    nvm use node
+
+- name: "NVM | Use latest node version"
+  ansible.builtin.shell: >
+    nvm use node
+
+- name: "NVM | Install latest npm version"
+  ansible.builtin.shell: >
+    nvm install-latest-npm
