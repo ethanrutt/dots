@@ -1,5 +1,5 @@
 - name: "PulseAudio | Check if pulseaudio already installed"
-  ansible.builtin.shell: "command -v pulseaudio"
+  ansible.builtin.shell: "pacman -Q | grep 'pulse'"
   register: result
   ignore_errors: true
 
