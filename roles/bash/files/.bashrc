@@ -44,9 +44,7 @@ else
     PS1='[\u@\h:\w]\$ '
 fi
 
-if [ -d  ~/.config/bash ]; then
-    for file in ~/.config/bash/*.sh; do
-      source "$file"
-    done
-fi
+for file in ~/.config/bash/*.sh; do
+  source "$file"
+done
 
