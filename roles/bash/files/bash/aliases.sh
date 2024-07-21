@@ -15,7 +15,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto -n'
 fi
 
-if [ -x $(command -v eza) ]; then
+if command -v eza &> /dev/null ; then
     alias ll='eza -alF --icons'
     alias la='eza -A'
     alias l='eza --oneline'
@@ -25,7 +25,7 @@ else
     alias l='ls'
 fi
 
-if [ -x $(command -v git) ]; then
+if command -v git &> /dev/null ; then
     alias gs='git status'
     alias gau='git add -u'
     alias gcmt='git commit -m'
@@ -34,13 +34,13 @@ if [ -x $(command -v git) ]; then
     alias gpll='git pull'
 fi
 
-if [ -x $(command -v tmux) ]; then
+if command -v tmux &> /dev/null ; then
     # allow tmux to use all 256 colors
     alias tmux='tmux -2'
     alias tls='tmux ls'
 fi
 
-if [ -x $(command -v tmuxster) ]; then
+if command -v tmuxster &> /dev/null ; then
     alias tster='tmuxster'
 fi
 

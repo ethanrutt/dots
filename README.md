@@ -40,6 +40,11 @@ ansible-playbook --ask-become-pass main.yml
 
 - get bash script setup to get this playbook and run it
 
+- packages missing
+    - xorg-xinit
+    - xorg-server
+    - noto-fonts-cjk
+
 - test on vms
 
 - figure out vault for ssh keys?

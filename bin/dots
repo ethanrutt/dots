@@ -1,7 +1,7 @@
 DOTS_DIR="$HOME/.dots"
 
 function arch_setup() {
-    if ! [ -x "$(command -v ansible)" ]; then
+    if ! command -v ansible &> /dev/null ; then
         echo "Installing Ansible"
         sudo pacman -Sy --noconfirm
         sudo pacman -S --noconfirm ansible
