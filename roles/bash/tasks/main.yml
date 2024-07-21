@@ -1,27 +1,16 @@
----
 - name: "Bash | Copy .bashrc"
   ansible.builtin.copy:
     src: ".bashrc"
     dest: "{{ ansible_user_dir }}/.bashrc"
     mode: "0644"
 
-- name: "Bash | Copy .bash_aliases"
+- name: "Bash | Copy bash to .config"
   ansible.builtin.copy:
-    src: ".bash_aliases"
-    dest: "{{ ansible_user_dir }}/.bash_aliases"
+    src: "bash"
+    dest: "{{ ansible_user_dir }}/.config/"
     mode: "0644"
-
-- name: "Bash | Copy .bash_logout"
-  ansible.builtin.copy:
-    src: ".bash_logout"
-    dest: "{{ ansible_user_dir }}/.bash_logout"
-    mode: "0644"
-
-- name: "Bash | Copy .tmuxster.bash"
-  ansible.builtin.copy:
-    src: ".tmuxster.bash"
-    dest: "{{ ansible_user_dir }}/.tmuxster.bash"
-    mode: "0644"
+    directory_mode: "0755"
+    force: true
 
 - name: "Bash | Run Ubuntu Tasks"
   ansible.builtin.import_tasks: ubuntu.yml

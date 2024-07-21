@@ -31,6 +31,7 @@ alias gpll='git pull'
 # allow tmux to use all 256 colors
 alias tmux='tmux -2'
 alias tls='tmux ls'
+alias tster='tmuxster'
 
 alias q='exit'
 
@@ -39,9 +40,4 @@ function cd {
     builtin cd "$@" && ll
 }
 
-# tmuxster and sf commands
-if [ -f ~/.tmuxster.bash ]; then
-    source ~/.tmuxster.bash
-    alias tster='tmuxster'
-fi
 
