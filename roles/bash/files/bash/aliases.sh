@@ -38,10 +38,7 @@ if command -v tmux &> /dev/null ; then
     # allow tmux to use all 256 colors
     alias tmux='tmux -2'
     alias tls='tmux ls'
-fi
-
-if command -v tmuxster &> /dev/null ; then
-    alias tster='tmuxster'
+    # alias tster defined in tmuxster.sh
 fi
 
 alias q='exit'

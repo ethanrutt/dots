@@ -53,3 +53,5 @@ function tmuxster {
     fi
 }
 
+alias tster="tmuxster"
+
