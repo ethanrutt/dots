@@ -22,51 +22,6 @@
     dest: "{{ ansible_env.HOME }}/.nvm"
     version: "{{ nvm_latest_release }}"
 
-- name: "NVM | check export NVM_DIR"
-  ansible.builtin.shell: >
-    grep 'export NVM_DIR = "$HOME/.nvm"' ~/.bashrc
-  args:
-    executable: /bin/bash
-  register: result
-  ignore_errors: true
-
-- name: "NVM | export NVM_DIR"
-  ansible.builtin.shell: >
-    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
-  args:
-    executable: /bin/bash
-  when: result.rc == 1
-
-- name: "NVM | check nvm.sh"
-  ansible.builtin.shell: >
-    grep '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' ~/.bashrc
-  args:
-    executable: /bin/bash
-  register: result
-  ignore_errors: true
-
-- name: "NVM | nvm.sh"
-  ansible.builtin.shell: >
-    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
-  args:
-    executable: /bin/bash
-  when: result.rc == 1
-
-- name: "NVM | check bash_completion NVM_DIR"
-  ansible.builtin.shell: >
-    grep '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' ~/.bashrc
-  args:
-    executable: /bin/bash
-  register: result
-  ignore_errors: true
-
-- name: "NVM | export NVM_DIR"
-  ansible.builtin.shell: >
-    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.bashrc
-  args:
-    executable: /bin/bash
-  when: result.rc == 1
-
 - name: "NVM | Install latest node"
   ansible.builtin.shell: >
     source ~/.nvm/nvm.sh && nvm install node

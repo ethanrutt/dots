@@ -25,21 +25,6 @@ ansible-playbook --ask-become-pass main.yml
 
 - get bash script setup to get this playbook and run it
 
-- figure out how to do additional roles if its arch
-    - Arch roles needed
-        <!-- - yay -->
-        <!-- - rofi -->
-        <!-- - discord -->
-        <!-- - spotify -->
-        <!-- - ephoto -->
-        <!-- - firefox -->
-        <!-- - noto-fonts (all CJK, emoji, and other noto fonts) -->
-        <!-- - shotgun -->
-        <!-- - ttf-agave-nerd -->
-
-- add additional stuff to config
-    - npm and nvm install and setup
-
 - test on vms
 
 - figure out vault for ssh keys?
