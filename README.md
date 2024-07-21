@@ -12,9 +12,13 @@ pip install ansible
 ```sh
 sudo pacman -S ansible
 ```
-- run the playbook
+- run the playbook (prob won't work since you likely need sudo to install packages)
 ```
 ansible-playbook main.yml
+```
+- run the playbook and install packages too
+```
+ansible-playbook --ask-become-pass main.yml
 ```
 
 ### TODO

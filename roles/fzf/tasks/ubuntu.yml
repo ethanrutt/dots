@@ -1,6 +1,6 @@
 - name: "fzf | Uninstall APT fzf"
-  become_user: root
   become: true
+  become_user: root
   ansible.builtin.apt:
     name: fzf
     state: absent

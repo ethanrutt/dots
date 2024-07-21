@@ -1,6 +1,6 @@
 - name: "Neovim | Install dependencies on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name:
       - cmake
@@ -11,8 +11,8 @@
     state: present
 
 - name: "Neovim | Install on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name: neovim
     state: present

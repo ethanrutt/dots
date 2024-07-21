@@ -1,6 +1,6 @@
 - name: "Discord | Install on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name: discord
     state: present

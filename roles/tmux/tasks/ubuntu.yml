@@ -1,6 +1,6 @@
 - name: "Tmux | Install on Ubuntu"
-  become_user: root
   become: true
+  become_user: root
   ansible.builtin.apt:
     name: tmux
     state: present

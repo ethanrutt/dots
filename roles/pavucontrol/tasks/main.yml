@@ -1,6 +1,6 @@
 - name: "PavuControl | Install on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name: pavucontrol
     state: present

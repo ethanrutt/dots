@@ -1,13 +1,13 @@
 - name: "Fonts | Install ttf-agave-nerd on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name: ttf-agave-nerd
     state: present
 
 - name: "Fonts | Install noto-fonts on Arch"
-  become_user: root
   become: true
+  become_user: root
   community.general.pacman:
     name: noto-fonts
     state: present
