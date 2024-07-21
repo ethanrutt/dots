@@ -6,6 +6,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local theme = beautiful.get()
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -61,13 +62,13 @@ soundbutton = wibox.widget {
         text = "   ",
         widget = wibox.widget.textbox
     },
-    bg = "#1e91d6",
+    bg = theme.default_bg,
     widget = wibox.container.background,
     shape = gears.shape.rounded_rect
 }
 
-soundbutton:connect_signal("mouse::enter", function(c) c:set_bg("#daffed") end)
-soundbutton:connect_signal("mouse::leave", function(c) c:set_bg("#1e91d6") end)
+soundbutton:connect_signal("mouse::enter", function(c) c:set_bg(theme.selected_bg) end)
+soundbutton:connect_signal("mouse::leave", function(c) c:set_bg(theme.default_bg) end)
 soundbutton:connect_signal("button::press", function(c, _, _, button)
     awful.spawn.with_shell("pavucontrol")
 end)
@@ -77,13 +78,13 @@ screenshotbutton = wibox.widget {
         text = "   ",
         widget = wibox.widget.textbox
     },
-    bg = "#1e91d6",
+    bg = theme.default_bg,
     widget = wibox.container.background,
     shape = gears.shape.rounded_rect
 }
 
-screenshotbutton:connect_signal("mouse::enter", function(c) c:set_bg("#daffed") end)
-screenshotbutton:connect_signal("mouse::leave", function(c) c:set_bg("#1e91d6") end)
+screenshotbutton:connect_signal("mouse::enter", function(c) c:set_bg(theme.selected_bg) end)
+screenshotbutton:connect_signal("mouse::leave", function(c) c:set_bg(theme.default_bg) end)
 screenshotbutton:connect_signal("button::press", function(c, _, _, button)
     awful.spawn.with_shell("shotgun")
 end)
@@ -92,21 +93,21 @@ end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
+    awful.button({}, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+        if client.focus then
+            client.focus:move_to_tag(t)
+        end
+    end),
+    awful.button({}, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+        if client.focus then
+            client.focus:toggle_tag(t)
+        end
+    end),
+    awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
+)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -116,7 +117,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "一", "二", "三", "四", "五", "六", "七", "八", "九" }, s, awful.layout.layouts[1])
+    awful.tag({ " 一 ", " 二 ", " 三 ", " 四 ", " 五 ", " 六 ", " 七 ", " 八 ", " 九 " }, s, awful.layout.layouts[1])
 
     -- Create a textbox for each screen
     s.mytextbox = wibox.widget {
@@ -136,7 +137,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        bg = "transparent",
+        bg = theme.wibar_bg,
+        height = 25,
     })
 
     -- Add widgets to the wibox
@@ -151,7 +153,7 @@ awful.screen.connect_for_each_screen(function(s)
             spacingwidget,
             {
                 s.mytextbox,
-                bg = "#1e91d6",
+                bg = theme.large_widget_bg,
                 shape = gears.shape.rounded_rect,
                 widget = wibox.container.background
             },
@@ -163,14 +165,8 @@ awful.screen.connect_for_each_screen(function(s)
             screenshotbutton,
             soundbutton,
             {
-                mykeyboardlayout,
-                bg = "#1e91d6",
-                shape = gears.shape.rounded_rect,
-                widget = wibox.container.background
-            },
-            {
                 textclock,
-                bg = "#1e91d6",
+                bg = theme.large_widget_bg,
                 shape = gears.shape.rounded_rect,
                 widget = wibox.container.background
             },
