@@ -19,3 +19,10 @@
     name: noto-fonts-cjk
     state: present
 
+- name: "Fonts | Install inter-font on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: inter-font
+    state: present
+

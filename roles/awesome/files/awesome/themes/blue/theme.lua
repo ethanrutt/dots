@@ -7,7 +7,6 @@ local ice_blue = "#9bf3f0"
 local indigo = "#4a0d67"
 local black = "#242c2e"
 local white = "#dddddd"
-local pink = "#ff7af6"
 
 local default_gradient = gears.color({
     type = "linear",
@@ -22,25 +21,14 @@ local default_gradient = gears.color({
     },
 })
 
-local large_gradient = gears.color({
-    type = "linear",
-    from = { 100, 0 },
-    to = { 0, 100 },
-    stops = {
-        { 0,   celestial_blue },
-        { 0.5, pink },
-        { 1,   pink },
-    },
-})
-
 
 local theme = {}
 
 theme.default_bg = default_gradient
 theme.selected_bg = mint_green
-theme.large_widget_bg = large_gradient
+theme.large_widget_bg = celestial_blue
 
-theme.font = "AgaveNerdFont 10"
+theme.font = "Inter 10"
 theme.useless_gap = 5
 theme.bg_normal = default_gradient
 theme.bg_focus = french_blue
@@ -61,13 +49,13 @@ theme.border_focus = mint_green
 theme.border_normal = ice_blue
 theme.border_marked = indigo
 
-theme.wibar_bg = "transparent"
+theme.wibar_bg = white
 
 theme.taglist_bg_focus = mint_green
 theme.taglist_bg_urgent = indigo
 theme.taglist_bg_empty = default_gradient
 theme.taglist_bg_occupied = default_gradient
-theme.taglist_spacing = 4
+theme.taglist_spacing = 2
 theme.taglist_shape = gears.shape.rounded_rect
 
 return theme

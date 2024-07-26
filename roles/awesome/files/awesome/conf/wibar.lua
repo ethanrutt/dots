@@ -90,7 +90,6 @@ screenshotbutton:connect_signal("button::press", function(c, _, _, button)
 end)
 
 
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -138,37 +137,64 @@ awful.screen.connect_for_each_screen(function(s)
         position = "top",
         screen = s,
         bg = theme.wibar_bg,
-        height = 25,
+        height = 35,
     })
+
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
+            {
+                s.mytaglist,
+                widget = wibox.container.margin,
+                bottom = 2,
+                top = 2,
+            }
+
         },
         {
             layout = wibox.layout.flex.horizontal,
             spacingwidget,
             {
-                s.mytextbox,
-                bg = theme.large_widget_bg,
-                shape = gears.shape.rounded_rect,
-                widget = wibox.container.background
+                {
+                    s.mytextbox,
+                    bg = theme.large_widget_bg,
+                    shape = gears.shape.rounded_rect,
+                    widget = wibox.container.background
+                },
+                widget = wibox.container.margin,
+                bottom = 2,
+                top = 2,
             },
             spacingwidget
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spacing = 5,
-            screenshotbutton,
-            soundbutton,
             {
-                textclock,
-                bg = theme.large_widget_bg,
-                shape = gears.shape.rounded_rect,
-                widget = wibox.container.background
+                screenshotbutton,
+                widget = wibox.container.margin,
+                bottom = 2,
+                top = 2,
+            },
+            {
+                soundbutton,
+                widget = wibox.container.margin,
+                bottom = 2,
+                top = 2,
+            },
+            {
+                {
+                    textclock,
+                    bg = theme.large_widget_bg,
+                    shape = gears.shape.rounded_rect,
+                    widget = wibox.container.background
+                },
+                widget = wibox.container.margin,
+                bottom = 2,
+                top = 2,
             },
         },
     }
