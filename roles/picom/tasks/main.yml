@@ -8,10 +8,8 @@
   when: result.rc == 0
 
 - name: "picom | Configure picom"
-  ansible.builtin.copy:
-    src: picom
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/picom/files/picom"
+    dest: "{{ ansible_user_dir }}/.config/picom"
+    state: link
 

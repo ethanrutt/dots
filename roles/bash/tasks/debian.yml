@@ -1,5 +1,5 @@
-- name: "Bash | Copy debian .bash_profile"
-  ansible.builtin.copy:
-    src: "debian/.bash_profile"
+- name: "Bash | Link debian .bash_profile"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/debian/files/debian/.bash_profile"
     dest: "{{ ansible_user_dir }}/.bash_profile"
-    mode: "0644"
+    state: link

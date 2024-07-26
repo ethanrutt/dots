@@ -6,9 +6,7 @@
     state: present
 
 - name: "Kitty | Configure kitty"
-  ansible.builtin.copy:
-    src: kitty
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+  ansible.builtin.file:
+    src: "{{ playbook_dir}}/roles/kitty/files/kitty"
+    dest: "{{ ansible_user_dir }}/.config/kitty"
+    state: link

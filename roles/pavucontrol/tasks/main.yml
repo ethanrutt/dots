@@ -6,10 +6,8 @@
     state: present
 
 - name: "PavuControl | Configure pavucontrol"
-  ansible.builtin.copy:
-    src: pavucontrol.ini
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/pavucontrol/files/pavucontrol.ini"
+    dest: "{{ ansible_user_dir }}/.config/pavucontrol.ini"
+    state: link
 

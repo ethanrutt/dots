@@ -1,8 +1,6 @@
-- name: "Wallpapers | Copy to Pictures"
-  ansible.builtin.copy:
-    src: wallpapers
-    dest: "{{ ansible_user_dir }}/Pictures/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+- name: "Wallpapers | Link to Pictures"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/wallpapers/files/wallpapers"
+    dest: "{{ ansible_user_dir }}/Pictures/wallpapers"
+    state: link
 

@@ -1,16 +1,14 @@
-- name: "Bash | Copy .bashrc"
-  ansible.builtin.copy:
-    src: ".bashrc"
+- name: "Bash | link .bashrc"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/bash/files/.bashrc"
     dest: "{{ ansible_user_dir }}/.bashrc"
-    mode: "0644"
+    state: link
 
-- name: "Bash | Copy bash to .config"
-  ansible.builtin.copy:
-    src: "bash"
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+- name: "Bash | Link bash to .config"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/bash/files/bash"
+    dest: "{{ ansible_user_dir }}/.config/bash"
+    state: link
 
 - name: "Bash | Run Debian Tasks"
   ansible.builtin.import_tasks: debian.yml
@@ -19,3 +17,4 @@
 - name: "Bash | Run Arch Tasks"
   ansible.builtin.import_tasks: arch.yml
   when: ansible_os_family == 'Archlinux'
+

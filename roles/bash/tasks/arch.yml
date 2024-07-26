@@ -1,11 +1,6 @@
-- name: "Bash | Copy arch .bash_profile"
-  ansible.builtin.copy:
-    src: "arch/.bash_profile"
+- name: "Bash | Link arch .bash_profile"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/bash/files/arch/.bash_profile"
     dest: "{{ ansible_user_dir }}/.bash_profile"
-    mode: "0644"
+    state: link
 
-- name: "Bash | Copy arch .xinitrc"
-  ansible.builtin.copy:
-    src: "arch/.xinitrc"
-    dest: "{{ ansible_user_dir }}/.xinitrc"
-    mode: "0644"

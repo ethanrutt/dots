@@ -6,9 +6,7 @@
     state: present
 
 - name: "Rofi | Configure rofi"
-  ansible.builtin.copy:
-    src: rofi
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/rofi/files/rofi"
+    dest: "{{ ansible_user_dir }}/.config/rofi"
+    state: link
