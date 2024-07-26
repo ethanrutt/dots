@@ -89,6 +89,11 @@ screenshotbutton:connect_signal("button::press", function(c, _, _, button)
     awful.spawn.with_shell("shotgun")
 end)
 
+archlogo = wibox.widget {
+    image  = gears.filesystem.get_configuration_dir() .. "icons/" .. "archlinux-icon.svg",
+    widget = wibox.widget.imagebox
+}
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -147,10 +152,20 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             {
+                archlogo,
+                widget = wibox.container.margin,
+                bottom = 4,
+                top = 4,
+                left = 6,
+                right = 4,
+            },
+            {
                 s.mytaglist,
                 widget = wibox.container.margin,
-                bottom = 2,
-                top = 2,
+                bottom = 4,
+                top = 4,
+                left = 4,
+                right = 4,
             }
 
         },
@@ -165,8 +180,8 @@ awful.screen.connect_for_each_screen(function(s)
                     widget = wibox.container.background
                 },
                 widget = wibox.container.margin,
-                bottom = 2,
-                top = 2,
+                bottom = 4,
+                top = 4,
             },
             spacingwidget
         },
@@ -176,14 +191,14 @@ awful.screen.connect_for_each_screen(function(s)
             {
                 screenshotbutton,
                 widget = wibox.container.margin,
-                bottom = 2,
-                top = 2,
+                bottom = 4,
+                top = 4,
             },
             {
                 soundbutton,
                 widget = wibox.container.margin,
-                bottom = 2,
-                top = 2,
+                bottom = 4,
+                top = 4,
             },
             {
                 {
@@ -193,8 +208,8 @@ awful.screen.connect_for_each_screen(function(s)
                     widget = wibox.container.background
                 },
                 widget = wibox.container.margin,
-                bottom = 2,
-                top = 2,
+                bottom = 4,
+                top = 4,
             },
         },
     }
