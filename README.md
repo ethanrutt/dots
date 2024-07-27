@@ -48,5 +48,3 @@ ansible-playbook --ask-become-pass main.yml
     - tsserver
     - html-lsp
     - css-lsp
-
-- do I need closetag if I have nvim-ts-autotag?
