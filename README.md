@@ -41,3 +41,10 @@ ansible-playbook --ask-become-pass main.yml
 
 - figure out vault for ssh keys?
 
+- stuff for python development
+    - ruff-lsp
+    - pyright
+- stuff for react development
+    - tsserver
+
+- do I need closetag if I have nvim-ts-autotag?
