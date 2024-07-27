@@ -46,5 +46,7 @@ ansible-playbook --ask-become-pass main.yml
     - pyright
 - stuff for react development
     - tsserver
+    - html-lsp
+    - css-lsp
 
 - do I need closetag if I have nvim-ts-autotag?
