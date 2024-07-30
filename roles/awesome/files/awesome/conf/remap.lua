@@ -69,8 +69,12 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ altmod,           }, "3", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+    awful.key(
+        { altmod, },
+        "3",
+        function () awful.spawn(terminal) end,
+        {description = "open a terminal", group = "launcher"}
+    ),
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -84,14 +88,18 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
 
     -- Prompt
-    awful.key({ modkey,           }, "r",     function () awful.spawn("rofi -show run")      end,
+    awful.key({ modkey,           }, "r",     function () awful.spawn("rofi -show run")       end,
               {description = "run prompt", group = "launcher"}),
     awful.key({ altmod,           }, "r",     function () awful.spawn("rofi -show drun")      end,
               {description = "run prompt", group = "launcher"}),
     awful.key({ modkey,           }, "Tab",   function() awful.spawn("rofi -show window")     end,
-              {description = "show windows", group = "rofi"}),
-    awful.key({ altmod,           }, "1",     function() awful.spawn("firefox -P")               end,
-              {description = "start firefox", group = "launcher"}),
+              {odescriptioN = "show windows", group = "rofi"}),
+    awful.key({ altmod,           }, "1",     function() awful.spawn.with_shell(
+        "firefox --profile ~/.mozilla/firefox/1uleydxc.default-release/")                            end,
+              {description = "launch default firefox profile"}),
+    awful.key({ altmod,           }, "2",     function() awful.spawn.with_shell(
+        "firefox --profile ~/.mozilla/firefox/0l50ru11.tamu/")                                       end,
+              {description = "launch tamu firefox profile"}),
     awful.key({ altmod,           }, "5",     function() awful.spawn("discord")               end,
               {description = "start discord", group = "launcher"}),
     awful.key({ altmod,           }, "6",     function() awful.spawn("spotify-launcher")               end,
