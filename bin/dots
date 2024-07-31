@@ -89,6 +89,10 @@ else
   git -C "$DOTS_DIR" pull --quiet
 fi
 
+if ! [[ -d "$HOME/.config" ]]; then
+    mkdir "$HOME/.config"
+fi
+
 echo "Running ansible playbook"
 pushd "$DOTS_DIR"
 ansible-playbook --ask-become-pass "$DOTS_DIR/main.yml"

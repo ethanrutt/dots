@@ -13,7 +13,7 @@ theme.default_bg = white
 theme.selected_bg = arch_blue
 theme.large_widget_bg = white
 
-theme.font = "Inter 10"
+theme.font = "AgaveNerdFont 10"
 theme.useless_gap = 5
 theme.bg_normal = white
 theme.bg_focus = arch_blue

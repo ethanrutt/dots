@@ -6,6 +6,8 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local lain = require("lain")
+
 local theme = beautiful.get()
 
 local function set_wallpaper(s)
@@ -57,21 +59,7 @@ spacingwidget = wibox.widget {
     layout         = wibox.layout.fixed.horizontal
 }
 
-soundbutton = wibox.widget {
-    {
-        text = "   ",
-        widget = wibox.widget.textbox
-    },
-    bg = theme.default_bg,
-    widget = wibox.container.background,
-    shape = gears.shape.rounded_rect
-}
 
-soundbutton:connect_signal("mouse::enter", function(c) c:set_bg(theme.selected_bg) end)
-soundbutton:connect_signal("mouse::leave", function(c) c:set_bg(theme.default_bg) end)
-soundbutton:connect_signal("button::press", function(c, _, _, button)
-    awful.spawn.with_shell("pavucontrol")
-end)
 
 screenshotbutton = wibox.widget {
     {
@@ -94,6 +82,68 @@ archlogo = wibox.widget {
     widget = wibox.widget.imagebox
 }
 
+local cpu = lain.widget.cpu {
+    settings = function()
+        widget:set_markup(" cpu | " .. cpu_now.usage .. "% ")
+    end
+}
+
+local mem = lain.widget.mem {
+    settings = function()
+        widget:set_markup(" mem | " .. mem_now.perc .. "% ")
+    end
+}
+
+local soundbar = lain.widget.pulse {
+    settings = function()
+        local vlevel = ""
+        local number_string = string.gsub(volume_now.left, "%%", "")
+        local vol = tonumber(number_string)
+
+        if volume_now.muted == "yes" then
+            vlevel = "  "
+        elseif vol < 50 then
+            vlevel = "  "
+        else
+            vlevel = "  "
+        end
+
+        vlevel = vlevel .. " | " .. volume_now.left .. " % "
+        widget:set_markup(lain.util.markup(theme.wibar_bg, vlevel))
+    end
+}
+
+soundbar.widget:buttons(awful.util.table.join(
+    awful.button({}, 1, function() -- left click
+        awful.spawn("pavucontrol")
+    end),
+    awful.button({}, 2, function() -- middle click
+        os.execute(string.format("pactl set-sink-volume %s 100%%", soundbar.device))
+        soundbar.update()
+    end),
+    awful.button({}, 3, function() -- right click
+        os.execute(string.format("pactl set-sink-mute %s toggle", soundbar.device))
+        soundbar.update()
+    end),
+    awful.button({}, 4, function() -- scroll up
+        os.execute(string.format("pactl set-sink-volume %s +1%%", soundbar.device))
+        soundbar.update()
+    end),
+    awful.button({}, 5, function() -- scroll down
+        os.execute(string.format("pactl set-sink-volume %s -1%%", soundbar.device))
+        soundbar.update()
+    end)
+))
+
+soundbar_bg = wibox.widget {
+    soundbar,
+    widget = wibox.container.background,
+    bg = theme.default_bg,
+    shape = gears.shape.rounded_rect,
+}
+
+soundbar_bg:connect_signal("mouse::enter", function(c) c:set_bg(theme.selected_bg) end)
+soundbar_bg:connect_signal("mouse::leave", function(c) c:set_bg(theme.default_bg) end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -112,6 +162,7 @@ local taglist_buttons = gears.table.join(
     awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
     awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
+
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -195,7 +246,29 @@ awful.screen.connect_for_each_screen(function(s)
                 top = 4,
             },
             {
-                soundbutton,
+                {
+                    cpu.widget,
+                    widget = wibox.container.background,
+                    bg = theme.default_bg,
+                    shape = gears.shape.rounded_rect
+                },
+                widget = wibox.container.margin,
+                bottom = 4,
+                top = 4,
+            },
+            {
+                {
+                    mem.widget,
+                    widget = wibox.container.background,
+                    bg = theme.default_bg,
+                    shape = gears.shape.rounded_rect
+                },
+                widget = wibox.container.margin,
+                bottom = 4,
+                top = 4,
+            },
+            {
+                soundbar_bg,
                 widget = wibox.container.margin,
                 bottom = 4,
                 top = 4,

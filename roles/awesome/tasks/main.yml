@@ -5,6 +5,15 @@
     name: awesome
     state: present
 
+- name: "Awesome | Check if yay already installed"
+  ansible.builtin.shell: "command -v yay"
+  register: result
+  ignore_errors: true
+
+- name: "Awesome | Install lain widgets"
+  ansible.builtin.shell: "yay -S lain-git --noconfirm"
+  when: result.rc == 0
+
 - name: "Awesome | Configure awesome"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/awesome/files/awesome"
