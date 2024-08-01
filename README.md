@@ -5,10 +5,21 @@
 ## Usage
 
 - This oneliner should completely set up your system (for arch)
-- I only really use Ubuntu in WSL so that's all Ubuntu will be setup for
+- I only really use Ubuntu in WSL so Ubuntu will only have my developer command line tools setup (nvim, tmux, bash)
 
 ```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dots/main/bin/dots)"
+```
+
+* This will setup the dots dir in `$HOME/.dots` and it will also add the `bin` folder to your path, allowing you to run this command at any point to sync all dotfiles again with the upstream repository
+```sh
+dots
+```
+
+* To run only a specific role, or pass other flags to the `ansible-playbook` command, just pass them straight into the `dots` binary
+* i.e. running only the `nvim` role
+```sh
+dots -t nvim 
 ```
 
 ## Dev Commands
@@ -44,7 +55,7 @@ ansible-playbook --ask-become-pass main.yml
 - stuff for python development
     - ruff-lsp
     - pyright
-- stuff for react development
+- stuff for web development
     - tsserver
     - html-lsp
     - css-lsp
