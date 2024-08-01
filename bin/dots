@@ -95,7 +95,7 @@ fi
 
 echo "Running ansible playbook"
 pushd "$DOTS_DIR"
-ansible-playbook --ask-become-pass "$DOTS_DIR/main.yml"
+ansible-playbook --ask-become-pass "$DOTS_DIR/main.yml" "$@"
 echo "playbook complete"
 popd
 
