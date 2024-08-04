@@ -1,7 +1,6 @@
-- name: "PulseAudio | Check if pulseaudio already installed"
-  ansible.builtin.shell: "pacman -Q | grep 'pulse'"
-  register: result
-  ignore_errors: true
+- name: "PulseAudio | Gather package facts"
+  ansible.builtin.package_facts:
+    manager: pacman
 
 - name: "PulseAudio | Install on Arch"
   become: true
@@ -9,5 +8,5 @@
   community.general.pacman:
     name: pulseaudio
     state: present
-  when: result.rc == 1
-
+  # pipewire-pulse conflicts with pulseaudio and will throw errors
+  when: ("pipewire-pulse" not in ansible_facts.packages)
