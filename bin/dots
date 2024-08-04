@@ -83,10 +83,10 @@ esac
 
 if ! [[ -d "$DOTS_DIR" ]]; then
   echo "Cloning repository"
-  git clone --quiet https://github.com/ethanrutt/dots.git "$DOTS_DIR"
+  git clone --recurse-submodules --quiet https://github.com/ethanrutt/dots.git "$DOTS_DIR"
 else
   echo "Updating repository"
-  git -C "$DOTS_DIR" pull --quiet
+  git -C "$DOTS_DIR" pull --recurse-submodules --quiet
 fi
 
 if ! [[ -d "$HOME/.config" ]]; then
