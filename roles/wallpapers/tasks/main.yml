@@ -1,3 +1,8 @@
+- name: "Wallpapers | Delete wallpapers if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Pictures/wallpapers"
+    state: absent
+
 - name: "Wallpapers | Link to Pictures"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/wallpapers/files/wallpapers"
