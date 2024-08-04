@@ -1,3 +1,8 @@
+- name: "Bash | Delete arch .bash_profile if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.bash_profile"
+    state: absent
+
 - name: "Bash | Link arch .bash_profile"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/bash/files/arch/.bash_profile"

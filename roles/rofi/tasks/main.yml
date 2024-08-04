@@ -5,6 +5,11 @@
     name: rofi
     state: present
 
+- name: "Rofi | Delete rofi if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/rofi"
+    state: absent
+
 - name: "Rofi | Configure rofi"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/rofi/files/rofi"

@@ -5,6 +5,11 @@
     name: kitty
     state: present
 
+- name: "Kitty | Delete kitty if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/kitty"
+    state: absent
+
 - name: "Kitty | Configure kitty"
   ansible.builtin.file:
     src: "{{ playbook_dir}}/roles/kitty/files/kitty"

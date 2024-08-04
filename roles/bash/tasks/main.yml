@@ -1,3 +1,13 @@
+- name: "Bash | Delete .bash_rc if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    state: absent
+
+- name: "Bash | Delete bash if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/bash"
+    state: absent
+
 - name: "Bash | link .bashrc"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/bash/files/.bashrc"

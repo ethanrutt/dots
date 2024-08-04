@@ -6,6 +6,11 @@
   ansible.builtin.shell: "yay -S picom-arian8j2-git --noconfirm"
   when: ("yay" in ansible_facts.packages) and ("picom-arian8j2-git" not in ansible_facts.packages)
 
+- name: "picom | Delete picom if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/picom"
+    state: absent
+
 - name: "picom | Configure picom"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/picom/files/picom"

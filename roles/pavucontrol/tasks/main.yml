@@ -5,6 +5,11 @@
     name: pavucontrol
     state: present
 
+- name: "PavuControl | Delete pavucontrol.ini if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/pavucontrol.ini"
+    state: absent
+
 - name: "PavuControl | Configure pavucontrol"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/pavucontrol/files/pavucontrol.ini"

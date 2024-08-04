@@ -12,6 +12,11 @@
     name: xorg-xinit
     state: present
 
+- name: "Xorg | Delete .xinitrc if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.xinitrc"
+    state: absent
+
 - name: "Xorg | Link arch .xinitrc"
   ansible.builtin.file:
     src: "{{ playbook_dir}}/roles/xorg/files/.xinitrc"
