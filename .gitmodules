@@ -1,0 +1,3 @@
+[submodule "roles/awesome/files/awesome-config"]
+	path = roles/awesome/files/awesome-config
+	url = git@github.com:ethanrutt/awesome-config.git

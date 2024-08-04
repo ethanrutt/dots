@@ -16,6 +16,6 @@
 
 - name: "Awesome | Configure awesome"
   ansible.builtin.file:
-    src: "{{ playbook_dir }}/roles/awesome/files/awesome"
+    src: "{{ playbook_dir }}/roles/awesome/files/awesome-config/awesome"
     dest: "{{ ansible_user_dir }}/.config/awesome"
     state: link
