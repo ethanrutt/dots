@@ -1,15 +1,13 @@
-- name: "Picom | Check if yay already installed"
-  ansible.builtin.shell: "command -v yay"
-  register: result
-  ignore_errors: true
+- name: "Picom | Gather package facts"
+  ansible.builtin.package_facts:
+    manager: pacman
 
 - name: "picom | Install picom-arian8j2-git"
   ansible.builtin.shell: "yay -S picom-arian8j2-git --noconfirm"
-  when: result.rc == 0
+  when: ("yay" in ansible_facts.packages) and ("picom-arian8j2-git" not in ansible_facts.packages)
 
 - name: "picom | Configure picom"
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/picom/files/picom"
     dest: "{{ ansible_user_dir }}/.config/picom"
     state: link
-

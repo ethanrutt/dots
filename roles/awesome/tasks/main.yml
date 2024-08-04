@@ -5,14 +5,13 @@
     name: awesome
     state: present
 
-- name: "Awesome | Check if yay already installed"
-  ansible.builtin.shell: "command -v yay"
-  register: result
-  ignore_errors: true
+- name: "Awesome | Gather package facts"
+  ansible.builtin.package_facts:
+    manager: pacman
 
 - name: "Awesome | Install lain widgets"
   ansible.builtin.shell: "yay -S lain-git --noconfirm"
-  when: result.rc == 0
+  when: ("yay" in ansible_facts.packages) and ("lain-git" not in ansible_facts.packages)
 
 - name: "Awesome | Configure awesome"
   ansible.builtin.file:
