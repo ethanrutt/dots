@@ -11,18 +11,16 @@
     name: base-devel
     state: present
 
-- name: "Yay | Check if yay already installed"
-  ansible.builtin.shell: "command -v yay"
-  register: result
-  ignore_errors: true
+- name: "Yay | Gather package facts"
+  ansible.builtin.package_facts:
+    manager: pacman
 
 - name: "Yay | Clone yay-bin repository"
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay-bin.git
     dest: "{{ ansible_user_dir }}/Downloads/yay-bin"
-  when: result.rc == 1
+  when: ("yay" not in ansible_facts.packages)
 
 - name: "Yay | makepkg"
   ansible.builtin.shell: "cd '{{ ansible_user_dir }}/Downloads/yay-bin' && makepkg -si --noconfirm"
-  when: result.rc == 1
-
+  when: ("yay" not in ansible_facts.packages)
