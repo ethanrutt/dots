@@ -74,7 +74,8 @@ return {
             lua_ls = {
                 Lua = {
                     workspace = { checkThirdParty = false },
-                    telemetry = { enable = false },
+                    runtime = { version = "LuaJIT" },
+                    library = { vim.env.VIMRUNTIME },
                 },
             },
             clangd = {},
