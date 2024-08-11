@@ -1,6 +1,6 @@
 [submodule "roles/awesome/files/awesome-config"]
 	path = roles/awesome/files/awesome-config
-	url = git@github.com:ethanrutt/awesome-config.git
+	url = https://github.com/ethanrutt/awesome-config.git
 [submodule "roles/nvim/files/neovim-config"]
 	path = roles/nvim/files/neovim-config
-	url = git@github.com:ethanrutt/neovim-config.git
+	url = https://github.com/ethanrutt/neovim-config.git
