@@ -192,7 +192,7 @@ keybindings:
     bindings: ['alt+shift+c']
 
   # Kill GlazeWM process safely.
-  - commands: ['shell-exec taskkill /IM "zebar.exe" /F', 'wm-exit']
+  - commands: ['wm-exit']
     bindings: ['alt+shift+q']
 
   # Re-evaluate configuration file.
