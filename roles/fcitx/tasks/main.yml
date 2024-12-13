@@ -1,0 +1,17 @@
+- name: "Fcitx | Install on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: fcitx
+    state: present
+
+- name: "Fcitx | Delete fcitx config if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/fcitx"
+    state: absent
+
+- name: "Fcitx | Configure fcitx"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/fcitx/files/fcitx"
+    dest: "{{ ansible_user_dir }}/.config/fcitx"
+    state: link
