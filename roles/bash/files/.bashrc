@@ -52,6 +52,4 @@ for file in ~/.config/bash/*.sh; do
   source "$file"
 done
 
-
-# Created by `pipx` on 2024-10-29 03:42:59
 export PATH="$PATH:/home/ethanrutt/.local/bin"
