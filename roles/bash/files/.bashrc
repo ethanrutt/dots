@@ -48,8 +48,9 @@ else
   PS1='[\u@\h:\w]$(get_git_branch)\$ '
 fi
 
+export PATH="$PATH:/home/ethanrutt/.local/bin"
+
 for file in ~/.config/bash/*.sh; do
   source "$file"
 done
 
-export PATH="$PATH:/home/ethanrutt/.local/bin"
