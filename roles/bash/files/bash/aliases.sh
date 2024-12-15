@@ -19,6 +19,7 @@ if command -v eza &> /dev/null ; then
     alias ll='eza -alF --icons'
     alias la='eza -A'
     alias l='eza --oneline'
+    alias ls='eza'
 else
     alias ll='ls -alF'
     alias la='ls -A'
