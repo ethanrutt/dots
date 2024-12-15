@@ -29,6 +29,7 @@ fi
 if command -v git &> /dev/null ; then
     alias gs='git status'
     alias gau='git add -u'
+    alias gap='git add -p'
     alias gcmt='git commit -m'
     alias glg='git log'
     alias gpsh='git push'
@@ -95,8 +96,8 @@ function tmuxster {
         esac
     done
 
-    if [ -z "${session_name}" ]; then
-        attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}')
+    if [[ -z "${session_name}" ]]; then
+        tmux ls && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || echo "no tmux sessions exist" && return
         tmux a -t "${attach_session}"
     else
         sf
