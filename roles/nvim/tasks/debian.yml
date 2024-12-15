@@ -24,4 +24,5 @@
   ansible.builtin.apt:
     name: neovim
     state: present
+    update-cache: true
 

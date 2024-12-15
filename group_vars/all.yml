@@ -5,6 +5,7 @@ debian_roles:
   - nvm
   - tmux
   - zips
+  - eza
 
 arch_roles:
   - awesome
@@ -30,3 +31,4 @@ arch_roles:
   - yay
   - zips
   - fcitx
+  - eza

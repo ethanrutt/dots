@@ -1,0 +1,7 @@
+- name: "Eza | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: "Eza | Run Arch tasks"
+  ansible.builtin.import_tasks: arch.yml
+  when: ansible_os_family == 'Archlinux'

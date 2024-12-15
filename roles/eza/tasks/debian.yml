@@ -1,0 +1,23 @@
+- name: "Eza | Install gpg for getting deb.gierens.de"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: gpg
+    state: present
+
+- name: "Eza | setup deb.gierens.de where eza is available for download (see eza INSTALL.md)"
+  become: true
+  become_user: root
+  ansible.builtin.shell: |
+    sudo mkdir -p /etc/apt/keyrings
+    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+
+- name: "Eza | Install eza"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: eza
+    state: present
+    update-cache: true
