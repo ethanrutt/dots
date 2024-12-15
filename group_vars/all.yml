@@ -1,16 +1,17 @@
 debian_roles:
-  - bash
-  - fzf
-  - nvim
-  - nvm
-  - tmux
-  - zips
   - eza
   - bat
+  - fzf
+  - tmux
+  - bash
+  - nvim
+  - nvm
+  - zips
 
 arch_roles:
   - awesome
-  - bash
+  - eza
+  - bat
   - discord
   - ephoto
   - firefox
@@ -32,5 +33,4 @@ arch_roles:
   - yay
   - zips
   - fcitx
-  - eza
-  - bat
+  - bash
