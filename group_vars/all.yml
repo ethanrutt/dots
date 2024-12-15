@@ -6,6 +6,7 @@ debian_roles:
   - tmux
   - zips
   - eza
+  - bat
 
 arch_roles:
   - awesome
@@ -32,3 +33,4 @@ arch_roles:
   - zips
   - fcitx
   - eza
+  - bat

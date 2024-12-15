@@ -1,0 +1,13 @@
+- name: "Bat | Install bat"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: bat
+    state: present
+    update-cache: true
+
+- name: "Bat | symlink properly since bat is batcat on debian/ubuntu"
+  ansible.builtin.file:
+    src: "/usr/bin/batcat"
+    dest: "{{ ansible_user_dir }}/.local/bin/bat"
+    state: link

@@ -1,0 +1,7 @@
+- name: "Bat | Install on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: bat
+    state: present
+

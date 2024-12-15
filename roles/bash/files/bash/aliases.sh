@@ -26,6 +26,10 @@ else
     alias l='ls'
 fi
 
+if command -v bat &> /dev/null ; then
+    alias cat='bat'
+fi
+
 if command -v git &> /dev/null ; then
     alias gs='git status'
     alias gau='git add -u'
