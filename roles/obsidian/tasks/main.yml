@@ -1,0 +1,13 @@
+- name: "Obsidian | Install on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: obsidian
+    state: present
+
+- name: "Obsidian | Link vaults in documents"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/obsidian/files/obsidian_vaults"
+    dest: "{{ ansible_user_dir }}/Documents/obsidian_vaults"
+    state: link
+

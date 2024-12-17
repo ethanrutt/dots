@@ -4,3 +4,6 @@
 [submodule "roles/nvim/files/neovim-config"]
 	path = roles/nvim/files/neovim-config
 	url = https://github.com/ethanrutt/neovim-config.git
+[submodule "roles/obsidian/files/obsidian_vaults"]
+	path = roles/obsidian/files/obsidian_vaults
+	url = https://github.com/ethanrutt/obsidian_vaults.git
