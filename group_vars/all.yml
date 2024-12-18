@@ -12,6 +12,7 @@ arch_roles:
   - awesome
   - eza
   - bat
+  - thunar
   - obsidian
   - discord
   - ephoto
