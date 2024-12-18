@@ -13,6 +13,7 @@ arch_roles:
   - eza
   - bat
   - thunar
+  - vlc
   - obsidian
   - discord
   - ephoto
