@@ -11,7 +11,7 @@
 
 - name: "Awesome | Install lain widgets"
   ansible.builtin.shell: "yay -S lain-git --noconfirm"
-  when: ("yay" in ansible_facts.packages) and ("lain-git" not in ansible_facts.packages)
+  when: ("yay-bin" in ansible_facts.packages) and ("lain-git" not in ansible_facts.packages)
 
 - name: "Awesome | Delete awesome if it exists"
   ansible.builtin.file:

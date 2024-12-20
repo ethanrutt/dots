@@ -19,8 +19,8 @@
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay-bin.git
     dest: "{{ ansible_user_dir }}/Downloads/yay-bin"
-  when: ("yay" not in ansible_facts.packages)
+  when: ("yay-bin" not in ansible_facts.packages)
 
 - name: "Yay | makepkg"
   ansible.builtin.shell: "cd '{{ ansible_user_dir }}/Downloads/yay-bin' && makepkg -si --noconfirm"
-  when: ("yay" not in ansible_facts.packages)
+  when: ("yay-bin" not in ansible_facts.packages)
