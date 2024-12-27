@@ -23,3 +23,7 @@ eval "$(fzf --bash)"
 # bat
 ################################################################################
 [ -d "$HOME/.config/bat/themes" ] && export BAT_THEME="Catppuccin-Mocha"
+if command -v bat &> /dev/null ; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export MANROFFOPT="-c"
+fi
