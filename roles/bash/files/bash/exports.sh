@@ -27,3 +27,17 @@ if command -v bat &> /dev/null ; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
     export MANROFFOPT="-c"
 fi
+
+################################################################################
+# fzf integration
+################################################################################
+if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null ; then
+    export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'if [[ -f {} ]] ; then bat -n --color=always --line-range=:500 {} ; else eza --color=always --tree --level=1 {} ; fi'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+    export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'eza --color=always --tree --level=1 {}'"
+fi

@@ -20,6 +20,7 @@ if command -v eza &> /dev/null ; then
     alias la='eza -A'
     alias l='eza --oneline'
     alias ls='eza'
+    alias tree='eza --tree'
 else
     alias ll='ls -alF'
     alias la='ls -A'
@@ -31,6 +32,7 @@ if command -v bat &> /dev/null ; then
 fi
 
 if command -v git &> /dev/null ; then
+    alias g='git'
     alias gs='git status'
     alias gau='git add -u'
     alias gap='git add -p'
@@ -38,6 +40,8 @@ if command -v git &> /dev/null ; then
     alias glg='git log'
     alias gpsh='git push'
     alias gpll='git pull'
+    alias gco='git checkout'
+    alias gd='git diff'
 fi
 
 if command -v tmux &> /dev/null ; then
