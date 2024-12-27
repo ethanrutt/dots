@@ -2,3 +2,5 @@ dependencies:
   - role: bat
   - role: eza
   - role: tmux
+  - role: fd
+  - role: fzf

@@ -31,13 +31,25 @@ fi
 ################################################################################
 # fzf integration
 ################################################################################
-if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null ; then
+if command -v bat &>/dev/null && command -v fzf &>/dev/null && command -v eza &> /dev/null && command -v fd &> /dev/null ; then
     export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'if [[ -f {} ]] ; then bat -n --color=always --line-range=:500 {} ; else eza --color=always --tree --level=1 {} ; fi'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+      --walker-skip .git,node_modules,target
+      --preview 'if [[ -f {} ]] ; then bat -n --color=always --line-range=:500 {} ; else eza --color=always --tree --level=1 {} ; fi'
+      --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
     export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'eza --color=always --tree --level=1 {}'"
+      --walker-skip .git,node_modules,target
+      --preview 'eza --color=always --tree --level=1 {}'"
+
+    export FZF_DEFAULT_COMMAND="fd --follow --hidden --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type directory --follow --hidden --exclude .git"
+
+    _fzf_compgen_path() {
+      fd --follow --hidden --exclude ".git" . "$1"
+    }
+
+    _fzf_compgen_dir() {
+      fd --type directory --follow --hidden --exclude ".git" . "$1"
+    }
 fi
