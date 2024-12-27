@@ -1,0 +1,7 @@
+- name: "FD | Install on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: fd
+    state: present
+
