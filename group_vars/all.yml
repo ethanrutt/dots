@@ -25,6 +25,7 @@ arch_roles:
   - nitrogen
   - nvim
   - nvm
+  - mupdf
   - pavucontrol
   - picom
   - pulseaudio
