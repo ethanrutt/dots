@@ -19,3 +19,7 @@ eval "$(fzf --bash)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+################################################################################
+# bat
+################################################################################
+[ -d "$HOME/.config/bat/themes" ] && export BAT_THEME="Catppuccin-Mocha"
