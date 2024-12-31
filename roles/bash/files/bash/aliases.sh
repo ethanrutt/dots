@@ -34,6 +34,7 @@ fi
 if command -v git &> /dev/null ; then
     alias g='git'
     alias gs='git status'
+    alias ga='git add'
     alias gau='git add -u'
     alias gap='git add -p'
     alias gcmt='git commit -m'

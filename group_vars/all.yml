@@ -17,6 +17,7 @@ arch_roles:
   - vlc
   - obsidian
   - discord
+  - delta
   - ephoto
   - firefox
   - fonts
