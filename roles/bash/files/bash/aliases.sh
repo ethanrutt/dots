@@ -105,7 +105,7 @@ function tmuxster {
     done
 
     if [[ -z "${session_name}" ]]; then
-        tmux ls && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || echo "no tmux sessions exist" && return
+        tmux ls && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || { echo "no tmux sessions exist" ; return ; }
         tmux a -t "${attach_session}"
     else
         sf
