@@ -1,0 +1,8 @@
+- name: "Playerctl | Install on Arch"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: playerctl
+    state: present
+
+
