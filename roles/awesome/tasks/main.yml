@@ -5,14 +5,6 @@
     name: awesome
     state: present
 
-- name: "Awesome | Gather package facts"
-  ansible.builtin.package_facts:
-    manager: pacman
-
-- name: "Awesome | Install lain widgets"
-  ansible.builtin.shell: "yay -S lain-git --noconfirm"
-  when: ("yay-bin" in ansible_facts.packages) and ("lain-git" not in ansible_facts.packages)
-
 - name: "Awesome | Delete awesome if it exists"
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.config/awesome"
