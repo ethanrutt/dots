@@ -1,7 +1,0 @@
-- name: "nm-connection-editor | Install on Arch"
-  become: true
-  become_user: root
-  community.general.pacman:
-    name: nm-connection-editor
-    state: present
-

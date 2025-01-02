@@ -26,7 +26,6 @@ arch_roles:
   - nitrogen
   - nvim
   - nvm
-  - nm-connection-editor
   - mupdf
   - fd
   - pavucontrol

@@ -1,4 +1,3 @@
 dependencies:
   - role: yay
   - role: playerctl
-  - role: nm-connection-editor
