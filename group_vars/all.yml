@@ -41,4 +41,5 @@ arch_roles:
   - yay
   - zips
   - fcitx
+  - 1password
   - bash
