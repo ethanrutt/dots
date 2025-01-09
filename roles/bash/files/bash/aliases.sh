@@ -59,17 +59,9 @@ function cd {
     builtin cd "$@" && ll
 }
 
-# search and cd into directory with fzf
-function sf {
-    dir=$(find -L . -path '*/.*' -prune -o -not -name '.*' -type d -print | cut -b3- | fzf)
-
-    if [ -z "${dir}" ] ; then
-        return
-    fi
-
-    cd "${dir}"
-}
-
+#
+# tmuxster
+#
 function tmuxster_usage {
     echo "Usage: tmuxster [-n session-name]"
 }
@@ -80,6 +72,24 @@ function tmuxster_usage {
 #
 # if ran with -n argument, then it fuzzy finds to the directory you want
 # then creates a new tmux session with that name given to -n argument
+#
+# if the env variable TMUXSTER_DEFAULT_DIR is set, then when running with the
+# -n argument, tmuxster will start the search for directories at that directory
+#
+# fzf must be installed and the `__fzf_cd__` command must be available to run in
+# your shell
+# tmux must be installed
+#
+# example usage
+# ```
+# export TMUXSTER_DEFAULT_DIR="/home/user/projects"
+# tmuxster -n project1
+# # then pick the directory you want, probably project1 in the projects folder
+# # after working for a bit and detaching from the session, create a new session
+# tmuxster -n project2
+# # after working for a bit and detaching, you can then see both sessions with
+# tmuxster
+# ```
 function tmuxster {
     local OPTIND session_name opt
 
@@ -106,13 +116,28 @@ function tmuxster {
     done
 
     if [[ -z "${session_name}" ]]; then
-        tmux ls && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || { echo "no tmux sessions exist" ; return ; }
-        tmux a -t "${attach_session}"
+        tmux ls &> /dev/null && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || { echo "no tmux sessions exist" ; return ; }
+
+        if [[ ! -z "${attach_session}" ]]; then
+            tmux a -t "${attach_session}"
+        fi
     else
-        sf
-        tmux new -s "${session_name}"
+        if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
+            cd "$TMUXSTER_DEFAULT_DIR" &> /dev/null
+        fi
+
+        cd_cmd="$(__fzf_cd__)"
+
+        if [[ ! -z "$cd_cmd" ]]; then
+            eval "$cd_cmd"
+            tmux new -s "${session_name}"
+        else
+            echo "cd to the specified directory failed"
+        fi
     fi
 }
+
+export TMUXSTER_DEFAULT_DIR="/home/ethanrutt/projects"
 
 alias tster="tmuxster"
 

@@ -1,7 +1,3 @@
-#
-# ~/.bash_profile
-#
-
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # japanese input
