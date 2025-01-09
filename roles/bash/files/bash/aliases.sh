@@ -116,7 +116,12 @@ function tmuxster {
     done
 
     if [[ -z "${session_name}" ]]; then
-        tmux ls &> /dev/null && attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}') || { echo "no tmux sessions exist" ; return ; }
+        tmux ls &> /dev/null && {
+            attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}')
+        } || {
+            echo "no tmux sessions exist"
+            return
+        }
 
         if [[ ! -z "${attach_session}" ]]; then
             tmux a -t "${attach_session}"
@@ -132,7 +137,7 @@ function tmuxster {
             eval "$cd_cmd"
             tmux new -s "${session_name}"
         else
-            echo "cd to the specified directory failed"
+            echo "cd to the specified directory was interrupted or failed"
         fi
     fi
 }
