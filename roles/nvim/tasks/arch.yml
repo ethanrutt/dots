@@ -5,6 +5,7 @@
     name:
       - cmake
       - curl
+      - wget
       - unzip
       - ripgrep
       - gcc

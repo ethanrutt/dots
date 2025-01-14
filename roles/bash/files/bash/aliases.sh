@@ -27,6 +27,10 @@ else
     alias l='ls'
 fi
 
+if command -v nvim &> /dev/null ; then
+    alias vimdiff='nvim -d'
+fi
+
 if command -v bat &> /dev/null ; then
     alias cat='bat'
 fi
