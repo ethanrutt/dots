@@ -9,6 +9,8 @@
       - unzip
       - ripgrep
       - gcc
+      - python
+      - java
     state: present
 
 - name: "Neovim | Install on Arch"

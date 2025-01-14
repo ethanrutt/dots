@@ -9,6 +9,8 @@
       - unzip
       - ripgrep
       - gcc
+      - python
+      - java
       - software-properties-common
     state: present
 
