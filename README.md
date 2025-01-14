@@ -19,7 +19,7 @@ dots
 * To run only a specific role, or pass other flags to the `ansible-playbook` command, just pass them straight into the `dots` binary
 * i.e. running only the `nvim` role
 ```sh
-dots -t nvim 
+dots -t nvim
 ```
 
 ## Dev Commands
@@ -48,14 +48,7 @@ ansible-playbook main.yml
 ansible-playbook --ask-become-pass main.yml
 ```
 
-### TODO
-
-- figure out vault for ssh keys?
-
-- stuff for python development
-    - ruff-lsp
-    - pyright
-- stuff for web development
-    - tsserver
-    - html-lsp
-    - css-lsp
+- note that installing this with the oneliner above will not allow you to
+easily do development unless you have a personal access token set up, since
+everything is cloned with http. If you would like to do development, then you
+should clone this manually with an ssh key
