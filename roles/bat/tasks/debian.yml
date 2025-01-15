@@ -7,6 +7,8 @@
     update-cache: true
 
 - name: "Bat | symlink properly since bat is batcat on debian/ubuntu"
+  become: true
+  become_user: root
   ansible.builtin.file:
     src: "/usr/bin/batcat"
     dest: "/usr/bin/bat"
