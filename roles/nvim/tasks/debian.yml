@@ -17,9 +17,8 @@
 - name: "Neovim | Add unstable ppa on Debian"
   become: true
   become_user: root
-  ansible.builtin.apt_repository:
-    repo: ppa:neovim-ppa/unstable
-    state: present
+  ansible.builtin.shell: >
+    sudo add-apt-repository ppa:neovim-ppa/unstable -y
 
 - name: "Neovim | Install on Debian"
   become: true
