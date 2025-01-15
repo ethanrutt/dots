@@ -8,6 +8,7 @@ debian_roles:
   - nvm
   - zips
   - git
+  - fd
 
 arch_roles:
   - awesome

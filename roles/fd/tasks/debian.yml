@@ -1,0 +1,16 @@
+- name: "fd | Install fd on Debian"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: fd-find
+    state: present
+    update-cache: true
+
+- name: "fd | symlink properly since bat is batcat on debian/ubuntu"
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    src: "/usr/bin/fdfind"
+    dest: "/usr/bin/fd"
+    state: link
+
