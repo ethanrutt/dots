@@ -9,6 +9,7 @@ debian_roles:
   - zips
   - git
   - fd
+  - delta
 
 arch_roles:
   - awesome

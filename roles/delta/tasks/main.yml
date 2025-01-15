@@ -1,21 +1,7 @@
-- name: "Delta | Install on Arch"
-  become: true
-  become_user: root
-  community.general.pacman:
-    name: git-delta
-    state: present
+- name: "Delta | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
 
-- name: "Delta | Gather package facts"
-  ansible.builtin.package_facts:
-    manager: pacman
-
-- name: "Delta | Configure git to use delta"
-  ansible.builtin.shell: |
-    git config --global core.pager delta
-    git config --global interactive.diffFilter 'delta --color-only'
-    git config --global delta.navigate true
-    git config --global delta.side-by-side true
-    git config --global delta.line-numbers true
-    git config --global merge.conflictStyle zdiff3
-  when: ("git" in ansible_facts.packages)
-
+- name: "Delta | Run Arch tasks"
+  ansible.builtin.import_tasks: arch.yml
+  when: ansible_os_family == 'Archlinux'
