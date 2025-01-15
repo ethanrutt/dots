@@ -1,0 +1,11 @@
+- name: "Git | Delete .gitconfig if it exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.gitconfig"
+    state: absent
+
+- name: "Git | Link .gitconfig"
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/git/files/.gitconfig"
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+    state: link
+
