@@ -10,6 +10,7 @@
       - ripgrep
       - gcc
       - python3
+      - python-is-python3
       - default-jdk
       - software-properties-common
     state: present
