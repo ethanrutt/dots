@@ -9,5 +9,5 @@
 - name: "Bat | symlink properly since bat is batcat on debian/ubuntu"
   ansible.builtin.file:
     src: "/usr/bin/batcat"
-    dest: "{{ ansible_user_dir }}/.local/bin/bat"
+    dest: "/usr/bin/bat"
     state: link
