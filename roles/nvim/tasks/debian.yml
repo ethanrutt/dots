@@ -9,8 +9,8 @@
       - unzip
       - ripgrep
       - gcc
-      - python
-      - java
+      - python3
+      - default-jdk
       - software-properties-common
     state: present
 
