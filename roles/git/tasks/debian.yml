@@ -1,0 +1,14 @@
+- name: "Git | Add git ppa on Debian"
+  become: true
+  become_user: root
+  ansible.builtin.shell: >
+    sudo add-apt-repository ppa:git-core/ppa -y
+
+- name: "Git | Install latest on Debian"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: git
+    state: present
+    update-cache: true
+
