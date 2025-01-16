@@ -1,20 +1,38 @@
+# commented out roles are because they are specified as dependencies in a meta
+# file, which means they will run before that role. If they are not commented
+# out, then there's a chance that they will run twice, once before the role
+# that they are depended on, and then once from the role specified in these
+# variables. Since that's pointless, I comment them out but keep them here so
+# that it is clear that they are being run in that group
+
 debian_roles:
-  - eza
-  - bat
-  - fzf
-  - tmux
+  # dependencies in bash
+  # - bat
+  # - eza
+  # - tmux
+  # - fd
+  # - fzf
   - bash
+  # dependency in nvim
+  # - nvm
   - nvim
-  - nvm
   - zips
-  - git
-  - fd
   - delta
+  # dependency in fzf
+  # - git
 
 arch_roles:
+  # dependency in awesome, postman, picom, 1password
+  # - yay
+  # dependency in awesome
+  # - playerctl
   - awesome
-  - eza
-  - bat
+  # dependencies in bash
+  # - bat
+  # - eza
+  # - tmux
+  # - fd
+  # - fzf
   - thunar
   - postman
   - vlc
@@ -24,40 +42,40 @@ arch_roles:
   - ephoto
   - firefox
   - fonts
-  - fzf
   - kitty
   - nitrogen
+  # dependency in nvim
+  # - nvm
   - nvim
-  - nvm
   - mupdf
-  - fd
   - pavucontrol
   - picom
   - pulseaudio
-  - playerctl
   - rofi
   - shotgun
   - spotify
-  - tmux
   - wallpapers
   - xorg
-  - yay
   - zips
   - fcitx
   - 1password
   - bash
-  - git
+  # dependency in fzf
+  # - git
 
 arch_wsl_roles:
-  - eza
-  - bat
-  - fzf
-  - tmux
+  # dependency in bash
+  # - bat
+  # - eza
+  # - tmux
+  # - fd
+  # - fzf
   - bash
+  # dependency in nvim
+  # - nvm
   - nvim
-  - nvm
   - zips
-  - git
-  - fd
   - delta
   - yay
+  # dependency in fzf
+  # - git
