@@ -9,3 +9,7 @@
     dest: "{{ ansible_user_dir }}/.gitconfig"
     state: link
 
+- name: "Git | Run Debian tasks"
+  ansible.builtin.import_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
