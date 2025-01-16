@@ -47,3 +47,17 @@ arch_roles:
   - 1password
   - bash
   - git
+
+arch_wsl_roles:
+  - eza
+  - bat
+  - fzf
+  - tmux
+  - bash
+  - nvim
+  - nvm
+  - zips
+  - git
+  - fd
+  - delta
+  - yay
