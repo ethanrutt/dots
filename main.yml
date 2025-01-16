@@ -16,9 +16,23 @@
       ansible.builtin.set_fact:
         run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or
         arch_roles | difference(exclude_roles | default([])) }}"
-      when: ansible_os_family == 'Archlinux'
+      when: "(ansible_os_family == 'Archlinux') and (ansible_facts.virtualization_type != 'wsl')"
       tags:
         - always
+
+    - name: Set ArchWSL roles
+      ansible.builtin.set_fact:
+        run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or
+        arch_wsl_roles | difference(exclude_roles | default([])) }}"
+      when: "(ansible_os_family == 'Archlinux') and (ansible_facts.virtualization_type == 'wsl')"
+      tags:
+        - always
+
+    - name: Create .config dir
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/.config"
+        state: directory
+        mode: "0755"
 
     - name: Display roles
       ansible.builtin.debug:

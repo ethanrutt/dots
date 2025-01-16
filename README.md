@@ -5,7 +5,8 @@
 ## Usage
 
 - This oneliner should completely set up your system (for arch)
-- I only really use Ubuntu in WSL so Ubuntu will only have my developer command line tools setup (nvim, tmux, bash)
+- I only really use Ubuntu in WSL and in VM's so Ubuntu will only have my developer command line tools setup, no `awesomewm` or any of the stuff required to run the system like the `pulse`, `rofi`, etc.
+- Make sure to have `curl` installed before running this command
 
 ```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ethanrutt/dots/main/bin/dots)"
@@ -21,6 +22,8 @@ dots
 ```sh
 dots -t nvim
 ```
+
+* note on Ubuntu there is no `delta` in apt so a manual install is required. This is documented and when running the `delta` role a debug message is printed.
 
 ## Dev Commands
 
@@ -38,14 +41,20 @@ sudo pacman -S ansible
 
 - run the playbook (prob won't work since you likely need sudo to install packages)
 
-```
+```sh
 ansible-playbook main.yml
 ```
 
 - run the playbook and install packages too
 
-```
+```sh
 ansible-playbook --ask-become-pass main.yml
+```
+
+- run only a specific role from the playbook i.e. only the nvim role
+
+```sh
+ansible-playbook --ask-become-pass main.yml -t nvim
 ```
 
 - note that installing this with the oneliner above will not allow you to
