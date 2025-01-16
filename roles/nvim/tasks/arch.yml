@@ -10,7 +10,7 @@
       - ripgrep
       - gcc
       - python
-      - jre-openjdk
+      - jdk21-openjdk
     state: present
 
 - name: "Neovim | Install on Arch"
