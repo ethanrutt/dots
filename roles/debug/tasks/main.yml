@@ -1,3 +1,4 @@
 - name: "Debug Facts"
   ansible.builtin.debug:
     msg: "{{ ansible_facts }}"
+  when: "(ansible_os_family == 'Archlinux') and (ansible_facts.virtualization_type == 'WSL')"
