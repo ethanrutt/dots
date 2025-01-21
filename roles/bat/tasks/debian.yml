@@ -1,15 +1,4 @@
-- name: "Bat | Install bat"
-  become: true
-  become_user: root
-  ansible.builtin.apt:
-    name: bat
-    state: present
-    update-cache: true
+- name: "Bat | How to install on Debian"
+  ansible.builtin.debug:
+    msg: "Because apt sucks, you must install this manually, as the version on apt right now is incompatible with delta. Go to the releases page, download the deb file, and run `dpkg -i file.deb`. https://github.com/sharkdp/bat/releases"
 
-- name: "Bat | symlink properly since bat is batcat on debian/ubuntu"
-  become: true
-  become_user: root
-  ansible.builtin.file:
-    src: "/usr/bin/batcat"
-    dest: "/usr/bin/bat"
-    state: link

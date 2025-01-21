@@ -1,4 +1,4 @@
 - name: "Delta | How to install on Debian"
   ansible.builtin.debug:
-    msg: "Because apt sucks, you must install this manually. Go to the releases page, download the deb file, and run `dpkg -i file.deb`. https://dandavison.github.io/delta/installation.html"
+    msg: "Because apt sucks, you must install this manually. Go to the releases page, download the deb file, and run `dpkg -i file.deb`. https://github.com/dandavison/delta/releases"
 
