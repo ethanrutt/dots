@@ -2,6 +2,7 @@
 # fzf
 #
 [ -d "$HOME/.fzf" ] && export PATH="$PATH:$HOME/.fzf/bin"
+[ -d "$HOME/.fzf-git" ] && source "$HOME/.fzf-git/fzf-git.sh"
 
 export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 
