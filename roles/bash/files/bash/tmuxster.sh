@@ -27,10 +27,14 @@
 #
 # DEPENDENCIES
 #
-#   `fzf` must be installed and the `__fzf_cd__` command must be available to
-#         run in your shell
+#   `fzf` must be installed and the available to run in your shell
 #
-#    `tmux` must be installed
+#   `tmux` must be installed and available to run in your shell
+#
+#   `awk` must be installed and available to run in your shell
+#
+#   `fd` or `find` must be installed and available to run in your shell. `fd`
+#         will be prioritized
 #
 # EXAMPLE
 #
@@ -43,7 +47,7 @@
 #   # create a new tmux session called project1. After running this command, a
 #   # fzf window will pop up that will list all directories starting either at
 #   # TMUXSTER_DEFAULT_DIR if it is set, otherwise the pwd where you ran command
-#   # tmuxster -n project1
+#   tmuxster -n project1
 #
 #   # after working for a bit and detaching from the session, create a new
 #   # session
@@ -61,13 +65,41 @@
 # SEE ALSO
 #   tmux
 #   fzf
+#   awk
+#   find
+#   fd
 
 function tmuxster_usage {
-    echo "Usage: tmuxster [-n session-name]"
+    echo "Usage: tmuxster [-n session-name]" >&2
 }
 
 function tmuxster {
-    local OPTIND session_name opt
+    local OPTIND session_name opt use_fd sessions attach_session session_directory
+
+    if ! command -v fzf &> /dev/null ; then
+        echo "Error: fzf not available" >&2
+        return 1
+    fi
+
+    if ! command -v tmux &> /dev/null ; then
+        echo "Error: tmux not available" >&2
+        return 1
+    fi
+
+    if ! command -v awk &> /dev/null ; then
+        echo "Error: awk not available" >&2
+        return 1
+    fi
+
+    if ! command -v fd &> /dev/null ; then
+        use_fd=true
+    else
+        if ! command -v find &> /dev/null ; then
+            echo "Error: both fd and find not available" >&2
+            return 1
+        fi
+        use_fd=false
+    fi
 
     while getopts ":n:" opt; do
         case "${opt}" in
@@ -75,12 +107,12 @@ function tmuxster {
                 session_name="${OPTARG}"
                 ;;
             \?)
-                echo "Invalid option: -${OPTARG}"
+                echo "Invalid option: -${OPTARG}" >&2
                 tmuxster_usage
                 return
                 ;;
             :)
-                echo "Option -${OPTARG} requires an argument"
+                echo "Option -${OPTARG} requires an argument" >&2
                 tmuxster_usage
                 return
                 ;;
@@ -91,30 +123,43 @@ function tmuxster {
         esac
     done
 
-    if [[ -z "${session_name}" ]]; then
-        tmux ls &> /dev/null && {
-            attach_session=$(tmux ls | fzf | awk -F ': ' '{print $1}')
-        } || {
-            echo "no tmux sessions exist"
-            return
-        }
+    if [[ -z "$session_name" ]]; then
+        sessions="$(tmux ls 2> /dev/null)"
 
-        if [[ ! -z "${attach_session}" ]]; then
-            tmux a -t "${attach_session}"
+        if [[ $? -ne 0 ]]; then
+            echo "Error: no tmux sessions exist" >&2
+            return 1
         fi
+
+        attach_session=$(echo "$sessions" | fzf | awk -F ': ' '{print $1}')
+
+        if [[ -z "${attach_session}" ]]; then
+            echo "Error: couldn't find session" >&2
+            return 1
+        fi
+
+        tmux a -t "${attach_session}"
     else
-        if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
-            cd "$TMUXSTER_DEFAULT_DIR" &> /dev/null
-        fi
-
-        cd_cmd="$(__fzf_cd__)"
-
-        if [[ ! -z "$cd_cmd" ]]; then
-            eval "$cd_cmd"
-            tmux new -s "${session_name}"
+        if [[ $use_fd ]]; then
+            if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
+                session_directory="$(cd "$TMUXSTER_DEFAULT_DIR" &>/dev/null && fd -d 1 | fzf)"
+            else
+                session_directory="$(fd | fzf)"
+            fi
         else
-            echo "cd to the specified directory was interrupted or failed"
+            if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
+                session_directory="$(find $TMUXSTER_DEFAULT_DIR | fzf)"
+            else
+                session_directory="$(find . | fzf)"
+            fi
         fi
+
+        if [[ -z "$session_directory" ]]; then
+            echo "Error: couldn't find new session directory" >&2
+            return 1
+        fi
+
+        tmux new -s "$session_name" -c "$session_directory"
     fi
 }
 
