@@ -23,7 +23,10 @@
 #   TMUXSTER_DEFAULT_DIR
 #         If this environment variable is set, then when running with the -n
 #         argument, tmuxster will start the search for directories to make the
-#         base of your new tmux session at that directory
+#         base of your new tmux session at that directory, and also only search
+#         one level down from this directory. This is ideal for a projects
+#         directory where all repositories are at the top level of the projects
+#         folder.
 #
 # DEPENDENCIES
 #
@@ -44,7 +47,7 @@
 #   #           directories to start, normally a projects directory
 #   export TMUXSTER_DEFAULT_DIR="/home/user/projects"
 #
-#   # create a new tmux session called project1. After running this command, a
+#   # create a new tmux session called project1. After running this command, an
 #   # fzf window will pop up that will list all directories starting either at
 #   # TMUXSTER_DEFAULT_DIR if it is set, otherwise the pwd where you ran command
 #   tmuxster -n project1
@@ -142,13 +145,13 @@ function tmuxster {
     else
         if [[ $use_fd ]]; then
             if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
-                session_directory="$(cd "$TMUXSTER_DEFAULT_DIR" &>/dev/null && fd -d 1 | fzf)"
+                session_directory="$(fd . "$TMUXSTER_DEFAULT_DIR" -d 1 | fzf)"
             else
                 session_directory="$(fd | fzf)"
             fi
         else
             if [[ ! -z "$TMUXSTER_DEFAULT_DIR" ]]; then
-                session_directory="$(find $TMUXSTER_DEFAULT_DIR | fzf)"
+                session_directory="$(find "$TMUXSTER_DEFAULT_DIR" -maxdepth 1 | fzf)"
             else
                 session_directory="$(find . | fzf)"
             fi
@@ -159,6 +162,7 @@ function tmuxster {
             return 1
         fi
 
+        echo "$session_directory"
         tmux new -s "$session_name" -c "$session_directory"
     fi
 }
