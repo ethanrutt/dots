@@ -1,0 +1,16 @@
+- name: "Bluetooth | Install bluetooth core and blueman"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - bluez
+      - bluez-utils
+      - blueman
+
+- name: "Bluetooth | Install pulseaudio bluetooth"
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pulseaudio-bluetooth
+  when: ("pipewire-pulse" not in ansible_facts.packages)

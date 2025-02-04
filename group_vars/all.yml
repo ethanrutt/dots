@@ -60,6 +60,7 @@ arch_roles:
   - fcitx
   - 1password
   - bash
+  - bluetooth
   # dependency in fzf
   # - git
 
