@@ -26,16 +26,6 @@
     name: inter-font
     state: present
 
-- name: "Fonts | Delete fontconfig if it exists"
-  ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/.config/fontconfig"
-    state: absent
-
-- name: "Fonts | Configure fonts"
-  ansible.builtin.file:
-    src: "{{ playbook_dir }}/roles/fonts/files/fontconfig"
-    dest: "{{ ansible_user_dir }}/.config/fontconfig"
-    state: link
-
-
-
+- name: "Fonts | Install HackGen on Arch"
+  ansible.builtin.shell: "yay -S ttf-hackgen"
+  when: ("yay-bin" in ansible_facts.packages) and ("ttf-hackgen" not in ansible_facts.packages)
