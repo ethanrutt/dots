@@ -3,6 +3,7 @@
     manager: pacman
 
 - name: "Postman | Install postman on Arch"
-  ansible.builtin.shell: "yay -S postman-bin --noconfirm"
+  ansible.builtin.shell: >
+    yay -S postman-bin --noconfirm
   when: ("yay-bin" in ansible_facts.packages) and ("postman-bin" not in ansible_facts.packages)
 

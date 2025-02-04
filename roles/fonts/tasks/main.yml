@@ -27,5 +27,6 @@
     state: present
 
 - name: "Fonts | Install HackGen on Arch"
-  ansible.builtin.shell: "yay -S ttf-hackgen"
+  ansible.builtin.shell: >
+    yay -S ttf-hackgen
   when: ("yay-bin" in ansible_facts.packages) and ("ttf-hackgen" not in ansible_facts.packages)

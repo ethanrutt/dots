@@ -1,4 +1,5 @@
 - name: "1password | Install 1password on Arch"
-  ansible.builtin.shell: "yay -S 1password --noconfirm"
+  ansible.builtin.shell: >
+    yay -S 1password --noconfirm
   when: ("yay-bin" in ansible_facts.packages) and ("1password" not in ansible_facts.packages)
 

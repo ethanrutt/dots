@@ -3,7 +3,8 @@
     manager: pacman
 
 - name: "picom | Install picom-arian8j2-git"
-  ansible.builtin.shell: "yay -S picom-arian8j2-git --noconfirm"
+  ansible.builtin.shell: >
+    yay -S picom-arian8j2-git --noconfirm
   when: ("yay-bin" in ansible_facts.packages) and ("picom-arian8j2-git" not in ansible_facts.packages)
 
 - name: "picom | Delete picom if it exists"
