@@ -39,9 +39,9 @@ function get_git_branch {
 
 # look at else for the prompt without colors, it's more readable
 if [ "$color_prompt" = yes ]; then
-  PS1='[\[\033[38;5;153m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\033[32m$(get_git_branch)\033[0m\$ '
+  PS1='[\[\033[38;5;153m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\033[32m$(get_git_branch)\033[0m\n\$ '
 else
-  PS1='[\u@\h:\w]$(get_git_branch)\$ '
+  PS1='[\u@\h:\w]$(get_git_branch)\n\$ '
 fi
 
 export PATH="$PATH:/home/ethanrutt/.local/bin"
