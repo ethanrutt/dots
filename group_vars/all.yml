@@ -40,7 +40,7 @@ arch_roles:
   - discord
   - delta
   - ephoto
-  - firefox
+  - brave
   - fonts
   - kitty
   - nitrogen

@@ -1,0 +1,5 @@
+- name: "Brave | Install brave on Arch"
+  ansible.builtin.shell: >
+    yay -S brave-bin --noconfirm
+  when: ("yay-bin" in ansible_facts.packages) and ("brave-bin" not in ansible_facts.packages)
+
